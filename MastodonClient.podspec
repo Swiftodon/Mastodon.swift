@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'MastodonClient'
   s.version          = '1.0.0'
-  s.summary          = 'A Swift Client for Mastodon instances, backed by RxSwift.'
+  s.summary          = 'A Swift / RxSwift / Moya / Gloss based API client for Mastodon instances.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
