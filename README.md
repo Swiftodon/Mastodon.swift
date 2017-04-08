@@ -27,7 +27,7 @@ Logging in is as easy as this then:
 
 ```swift
 RxMoyaProvider<Mastodon.OAuth>()
-.request(.authenticate(app.clientId, app.clientSecret, username, password))
+.request(.authenticate(app, username, password))
 .mapObject(type: AccessToken.self)
 .subscribe { even in … }
 ```

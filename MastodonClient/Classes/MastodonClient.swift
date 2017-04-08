@@ -21,7 +21,7 @@ class MastodonClient {
     
     func getToken(_ app: App, username: String, _ password: String) -> Observable<AccessToken> {
         return RxMoyaProvider<Mastodon.OAuth>(plugins: plugins)
-            .request(.authenticate(app.clientId, app.clientSecret, username, password))
+            .request(.authenticate(app, username, password))
             .mapObject(type: AccessToken.self)
     }
     
