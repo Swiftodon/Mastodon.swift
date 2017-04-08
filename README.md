@@ -17,6 +17,12 @@ This client is designed to connect to any Mastodon instance and interact with it
 Settings.shared.baseURL = NSURL(string: "https://mastodon.social")!
 ```
 
+Given you've got an OAuth Client
+
+```swift
+let app = App(clientId: "…", clientSecret: "…")
+```
+
 Logging in is as easy as this then:
 
 ```swift
