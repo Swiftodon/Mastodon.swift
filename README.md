@@ -20,7 +20,7 @@ Settings.shared.baseURL = NSURL(string: "https://mastodon.social")!
 Logging in is as easy as this then:
 
 ```swift
-RxMoyaProvider<Mastodon.OAuth>(plugins: plugins)
+RxMoyaProvider<Mastodon.OAuth>()
 .request(.authenticate(app.clientId, app.clientSecret, username, password))
 .mapObject(type: AccessToken.self)
 .subscribe { even in … }
@@ -52,7 +52,7 @@ pod "MastodonClient"
 
 ## Author
 
-Marcus Kida <marcus@kida.io<
+Marcus Kida <marcus@kida.io>
 
 ## License
 
