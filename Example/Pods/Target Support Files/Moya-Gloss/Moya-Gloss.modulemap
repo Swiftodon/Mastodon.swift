@@ -1,0 +1,6 @@
+framework module Moya_Gloss {
+  umbrella header "Moya-Gloss-umbrella.h"
+
+  export *
+  module * { export * }
+}
