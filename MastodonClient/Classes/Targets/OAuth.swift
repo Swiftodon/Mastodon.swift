@@ -1,3 +1,4 @@
+import Foundation
 import Moya
 
 typealias ClientId = String

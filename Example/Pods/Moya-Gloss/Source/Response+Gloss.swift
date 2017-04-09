@@ -5,6 +5,7 @@
 //  Copyright (c) 2016 Steven Rogers
 //
 
+import Foundation
 import Moya
 import Gloss
 
