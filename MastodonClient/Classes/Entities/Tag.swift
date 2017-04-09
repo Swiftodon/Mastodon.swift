@@ -1,11 +1,11 @@
 import Foundation
 import Gloss
 
-struct Tag: Decodable {
-    let name: String
-    let url: URL?
+public struct Tag: Decodable {
+    public let name: String
+    public let url: URL?
     
-    init?(json: JSON) {
+    public init?(json: JSON) {
         guard
             let name: String = "name" <~~ json
         else { return nil}

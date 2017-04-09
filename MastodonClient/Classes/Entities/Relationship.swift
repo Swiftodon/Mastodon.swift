@@ -1,13 +1,13 @@
 import Gloss
 
-struct Relationship: Decodable {
-    let following: Bool?
-    let followedBy: Bool?
-    let blocking: Bool?
-    let muting: Bool?
-    let requested: Bool?
+public struct Relationship: Decodable {
+    public let following: Bool?
+    public let followedBy: Bool?
+    public let blocking: Bool?
+    public let muting: Bool?
+    public let requested: Bool?
     
-    init?(json: JSON) {
+    public init?(json: JSON) {
         following = "following" <~~ json
         followedBy = "followedBy" <~~ json
         blocking = "blocking" <~~ json

@@ -1,13 +1,13 @@
 import Foundation
 import Gloss
 
-struct Card: Decodable {
-    let url: URL?
-    let title: String
-    let description: String?
-    let image: URL?
+public struct Card: Decodable {
+    public let url: URL?
+    public let title: String
+    public let description: String?
+    public let image: URL?
     
-    init?(json: JSON) {
+    public init?(json: JSON) {
         guard
             let url: String = "url" <~~ json,
             let title: String = "title" <~~ json

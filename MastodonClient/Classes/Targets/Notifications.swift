@@ -2,7 +2,7 @@ import Foundation
 import Moya
 
 extension Mastodon {
-    enum Notifications {
+    public enum Notifications {
         case notifications
         case notification(String)
         case clear
@@ -11,12 +11,12 @@ extension Mastodon {
 
 extension Mastodon.Notifications: TargetType {
     /// The target's base `URL`.
-    var baseURL: URL {
+    public var baseURL: URL {
         return Settings.shared.baseURL!.appendingPathComponent("/api/v1/notifications")
     }
     
     /// The path to be appended to `baseURL` to form the full `URL`.
-    var path: String {
+    public var path: String {
         switch self {
         case .notifications:
             return "/"
@@ -28,7 +28,7 @@ extension Mastodon.Notifications: TargetType {
     }
     
     /// The HTTP method used in the request.
-    var method: Moya.Method {
+    public var method: Moya.Method {
         switch self {
         case .notifications, .notification(_):
             return .get
@@ -38,7 +38,7 @@ extension Mastodon.Notifications: TargetType {
     }
     
     /// The parameters to be incoded in the request.
-    var parameters: [String: Any]? {
+    public var parameters: [String: Any]? {
         switch self {
         default:
             return nil
@@ -46,7 +46,7 @@ extension Mastodon.Notifications: TargetType {
     }
     
     /// The method used for parameter encoding.
-    var parameterEncoding: ParameterEncoding {
+    public var parameterEncoding: ParameterEncoding {
         switch self {
         default:
             return URLEncoding.default
@@ -54,12 +54,12 @@ extension Mastodon.Notifications: TargetType {
     }
     
     /// Provides stub data for use in testing.
-    var sampleData: Data {
+    public var sampleData: Data {
         return "{}".data(using: .utf8)!
     }
     
     /// The type of HTTP task to be performed.
-    var task: Task {
+    public var task: Task {
         switch self {
         default:
             return .request

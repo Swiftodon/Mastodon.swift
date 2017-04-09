@@ -3,14 +3,16 @@ import RxSwift
 import Moya
 import Moya_Gloss
 
-typealias Scope = String
-typealias Scopes = [Scope]
+public typealias Scope = String
+public typealias Scopes = [Scope]
 
-class MastodonClient {
+public class MastodonClient {
+    public init() {
+    }
     
-    var plugins = [PluginType]()
+    public var plugins = [PluginType]()
 
-    func createApp(_ name: String, redirectUri: String = "urn:ietf:wg:oauth:2.0:oob", scopes: Scopes, url: URL) -> Observable<App> {
+    public func createApp(_ name: String, redirectUri: String = "urn:ietf:wg:oauth:2.0:oob", scopes: Scopes, url: URL) -> Observable<App> {
         return RxMoyaProvider<Mastodon.Apps>(plugins: plugins)
             .request(.register(
                 name, redirectUri,
@@ -20,13 +22,13 @@ class MastodonClient {
             .mapObject(type: App.self)
     }
     
-    func getToken(_ app: App, username: String, _ password: String) -> Observable<AccessToken> {
+    public func getToken(_ app: App, username: String, _ password: String) -> Observable<AccessToken> {
         return RxMoyaProvider<Mastodon.OAuth>(plugins: plugins)
             .request(.authenticate(app, username, password))
             .mapObject(type: AccessToken.self)
     }
     
-    func getHomeTimeline(_ token: String) -> Observable<[Status]> {
+    public func getHomeTimeline(_ token: String) -> Observable<[Status]> {
         let accessToken = AccessTokenPlugin(token: token)
         return RxMoyaProvider<Mastodon.Timelines>(
                 plugins: [plugins, [accessToken]].flatMap { $0 }

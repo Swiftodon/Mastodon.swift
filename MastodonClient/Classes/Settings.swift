@@ -1,7 +1,7 @@
 import Foundation
 
-struct Settings {
-    var baseURL: URL?
-    
-    static let shared = Settings()
+public struct Settings {
+    public var baseURL: URL?
+
+    public static var shared = Settings()
 }

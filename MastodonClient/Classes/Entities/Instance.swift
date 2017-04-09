@@ -1,12 +1,12 @@
 import Gloss
 
-struct Instance: Decodable {
-    let uri: String
-    let title: String?
-    let description: String?
-    let email: String?
+public struct Instance: Decodable {
+    public let uri: String
+    public let title: String?
+    public let description: String?
+    public let email: String?
     
-    init?(json: JSON) {
+    public init?(json: JSON) {
         guard
             let uri: String = "uri" <~~ json
         else { return nil }

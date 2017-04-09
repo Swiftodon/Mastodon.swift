@@ -1,10 +1,10 @@
 import Gloss
 
-struct Context: Decodable {
-    let ancestors: [Status]
-    let descendants: [Status]
+public struct Context: Decodable {
+    public let ancestors: [Status]
+    public let descendants: [Status]
     
-    init?(json: JSON) {
+    public init?(json: JSON) {
         guard
             let ancestors: [Status] = "ancestors" <~~ json,
             let descendants: [Status] = "descendants" <~~ json

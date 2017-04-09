@@ -1,22 +1,22 @@
 import Foundation
 import Gloss
 
-struct Account: Decodable {
-    let id: Int
-    let username: String
-    let acct: String
-    let displayName: String?
-    let note: String?
-    let url: URL?
-    let avatar: URL?
-    let header: URL?
-    let locked: Bool
-    let createdAt: String
-    let followersCount: Int
-    let followingCount: Int
-    let statusesCount: Int
+public struct Account: Decodable {
+    public let id: Int
+    public let username: String
+    public let acct: String
+    public let displayName: String?
+    public let note: String?
+    public let url: URL?
+    public let avatar: URL?
+    public let header: URL?
+    public let locked: Bool
+    public let createdAt: String
+    public let followersCount: Int
+    public let followingCount: Int
+    public let statusesCount: Int
     
-    init?(json: JSON) {
+    public init?(json: JSON) {
         guard
             let id: Int = "id" <~~ json,
             let username: String = "username" <~~ json,

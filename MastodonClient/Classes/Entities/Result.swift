@@ -1,13 +1,13 @@
 import Gloss
 
-typealias Hashtag = String
+public typealias Hashtag = String
 
-struct Result: Decodable {
-    let accounts: [Account]
-    let statuses: [Status]
-    let hashtags: [Hashtag]
+public struct Result: Decodable {
+    public let accounts: [Account]
+    public let statuses: [Status]
+    public let hashtags: [Hashtag]
     
-    init?(json: JSON) {
+    public init?(json: JSON) {
         accounts = "accounts" <~~ json ?? []
         statuses = "statuses" <~~ json ?? []
         hashtags = "hashtags" <~~ json ?? []

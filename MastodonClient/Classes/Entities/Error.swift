@@ -1,9 +1,9 @@
 import Gloss
 
-struct Error: Decodable {
-    let error: String
+public struct Error: Decodable {
+    public let error: String
     
-    init?(json: JSON) {
+    public init?(json: JSON) {
         guard
             let error: String = "error" <~~ json
         else { return nil }

@@ -2,8 +2,8 @@ import Foundation
 import Moya
 
 extension Mastodon {
-    enum Statuses {
-        enum Visibility: String {
+    public enum Statuses {
+        public enum Visibility: String {
             case direct = "direct"
             case priv = "private"
             case unlisted = "unlisted"
@@ -25,12 +25,12 @@ extension Mastodon {
 
 extension Mastodon.Statuses: TargetType {
     /// The target's base `URL`.
-    var baseURL: URL {
+    public var baseURL: URL {
         return Settings.shared.baseURL!.appendingPathComponent("/api/v1/statuses")
     }
     
     /// The path to be appended to `baseURL` to form the full `URL`.
-    var path: String {
+    public var path: String {
         switch self {
         case .status(let id):
             return "/\(id)"
@@ -58,7 +58,7 @@ extension Mastodon.Statuses: TargetType {
     }
     
     /// The HTTP method used in the request.
-    var method: Moya.Method {
+    public var method: Moya.Method {
         switch self {
         case .new(_, _, _, _, _, _), .reblog(_), .unreblog(_), .favourite(_), .unfavourite(_):
             return .post
@@ -70,7 +70,7 @@ extension Mastodon.Statuses: TargetType {
     }
     
     /// The parameters to be incoded in the request.
-    var parameters: [String: Any]? {
+    public var parameters: [String: Any]? {
         switch self {
         case .new(let status, let inReplyToId, let mediaIds, let sensitive, let spoiler, let visibility):
             return [
@@ -87,17 +87,17 @@ extension Mastodon.Statuses: TargetType {
     }
     
     /// The method used for parameter encoding.
-    var parameterEncoding: ParameterEncoding {
+    public var parameterEncoding: ParameterEncoding {
         return URLEncoding.default
     }
     
     /// Provides stub data for use in testing.
-    var sampleData: Data {
+    public var sampleData: Data {
         return "{}".data(using: .utf8)!
     }
     
     /// The type of HTTP task to be performed.
-    var task: Task {
+    public var task: Task {
         return .request
     }
 }
