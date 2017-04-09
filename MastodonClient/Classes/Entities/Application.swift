@@ -1,10 +1,10 @@
 import Gloss
 
-struct Application: Decodable {
-    let name: String
-    let website: URL?
+public struct Application: Decodable {
+    public let name: String
+    public let website: URL?
     
-    init?(json: JSON) {
+    public init?(json: JSON) {
         guard
             let name: String = "name" <~~ json
         else { return nil }

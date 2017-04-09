@@ -1,7 +1,7 @@
 import Moya
 
 extension Mastodon {
-    enum Account {
+    public enum Account {
         case account(AccountId)
         case verifyCredentials
         case followers(AccountId)

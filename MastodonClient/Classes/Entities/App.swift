@@ -1,12 +1,12 @@
 import Gloss
 
-struct App: Decodable {
-    let id: Int
-    let redirectUri: String
-    let clientId: String
-    let clientSecret: String
+public struct App: Decodable {
+    public let id: Int
+    public let redirectUri: String
+    public let clientId: String
+    public let clientSecret: String
     
-    init?(json: JSON) {
+    public init?(json: JSON) {
         guard
             let id: Int = "id" <~~ json,
             let redirectUri: String = "redirect_uri" <~~ json,
@@ -20,7 +20,7 @@ struct App: Decodable {
         self.clientSecret = clientSecret
     }
     
-    init(clientId: String, clientSecret: String) {
+    public init(clientId: String, clientSecret: String) {
         self.id = 0
         self.redirectUri = ""
         self.clientId = clientId

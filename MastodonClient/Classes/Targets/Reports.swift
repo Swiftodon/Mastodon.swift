@@ -1,7 +1,7 @@
 import Moya
 
 extension Mastodon {
-    enum Reports {
+    public enum Reports {
         case list
         case report(String, [String], String)
     }
@@ -9,12 +9,12 @@ extension Mastodon {
 
 extension Mastodon.Reports: TargetType {
     /// The target's base `URL`.
-    var baseURL: URL {
+    public var baseURL: URL {
         return Settings.shared.baseURL!.appendingPathComponent("/api/v1/reports")
     }
     
     /// The path to be appended to `baseURL` to form the full `URL`.
-    var path: String {
+    public var path: String {
         switch self {
         case .list, .report(_, _, _):
             return "/"
@@ -22,7 +22,7 @@ extension Mastodon.Reports: TargetType {
     }
     
     /// The HTTP method used in the request.
-    var method: Moya.Method {
+    public var method: Moya.Method {
         switch self {
         case .list:
             return .get
@@ -32,7 +32,7 @@ extension Mastodon.Reports: TargetType {
     }
     
     /// The parameters to be incoded in the request.
-    var parameters: [String: Any]? {
+    public var parameters: [String: Any]? {
         switch self {
         case .list:
             return nil
@@ -46,7 +46,7 @@ extension Mastodon.Reports: TargetType {
     }
     
     /// The method used for parameter encoding.
-    var parameterEncoding: ParameterEncoding {
+    public var parameterEncoding: ParameterEncoding {
         switch self {
         default:
             return URLEncoding.default
@@ -54,12 +54,12 @@ extension Mastodon.Reports: TargetType {
     }
     
     /// Provides stub data for use in testing.
-    var sampleData: Data {
+    public var sampleData: Data {
         return "{}".data(using: .utf8)!
     }
     
     /// The type of HTTP task to be performed.
-    var task: Task {
+    public var task: Task {
         switch self {
         default:
             return .request

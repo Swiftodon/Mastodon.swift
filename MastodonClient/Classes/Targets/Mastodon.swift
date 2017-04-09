@@ -1,8 +1,8 @@
 import Foundation
 
-typealias AccountId = String
-typealias SearchQuery = String
+public typealias AccountId = String
+public typealias SearchQuery = String
 
-class Mastodon {
+public class Mastodon {
     
 }

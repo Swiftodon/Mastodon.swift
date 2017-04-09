@@ -1,12 +1,12 @@
 import Gloss
 
-struct Mention: Decodable {
-    let url: String
-    let username: String
-    let acct: String
-    let id: Int
+public struct Mention: Decodable {
+    public let url: String
+    public let username: String
+    public let acct: String
+    public let id: Int
     
-    init?(json: JSON) {
+    public init?(json: JSON) {
         guard
             let url: String = "url" <~~ json,
             let username: String = "username" <~~ json,

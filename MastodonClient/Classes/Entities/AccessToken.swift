@@ -1,9 +1,9 @@
 import Gloss
 
-struct AccessToken: Decodable {
-    let token: String
+public struct AccessToken: Decodable {
+    public let token: String
     
-    init?(json: JSON) {
+    public init?(json: JSON) {
         guard
             let token: String = "access_token" <~~ json
         else { return nil }

@@ -1,19 +1,19 @@
 import Gloss
 
-struct Notification: Decodable {
-    enum NotificationType: String {
+public struct Notification: Decodable {
+    public enum NotificationType: String {
         case mention = "mention"
         case reblog = "reblog"
         case favourite = "favourite"
         case follow = "follow"
     }
-    let id: Int
-    let type: NotificationType
-    let createdAt: String
-    let account: Account
-    let status: Status
+    public let id: Int
+    public let type: NotificationType
+    public let createdAt: String
+    public let account: Account
+    public let status: Status
     
-    init?(json: JSON) {
+    public init?(json: JSON) {
         guard
             let id: Int = "id" <~~ json,
             let type: String = "type" <~~ json,

@@ -1,10 +1,10 @@
 import Gloss
 
-struct Report: Decodable {
-    let id: Int
-    let actionTaken: String?
+public struct Report: Decodable {
+    public let id: Int
+    public let actionTaken: String?
     
-    init?(json: JSON) {
+    public init?(json: JSON) {
         guard
             let id: Int = "id" <~~ json
         else { return nil }

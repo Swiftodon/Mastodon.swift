@@ -1,37 +1,37 @@
 import Gloss
 
-typealias StatusId = String
-typealias Html = String
+public typealias StatusId = String
+public typealias Html = String
 
-class Status: Decodable {
-    enum Visibility: String {
+public class Status: Decodable {
+    public enum Visibility: String {
         case pub = "public"
         case unlisted = "unlisted"
         case priv = "private"
         case direct = "direct"
     }
-    let id: Int
-    let uri: String
-    let url: URL
-    let account: Account?
-    let inReplyToId: AccountId?
-    let inReplyToAccount: StatusId?
-    let reblog: Status?
-    let content: Html
-    let createdAt: String
-    let reblogsCount: Int
-    let favouritesCount: Int
-    let reblogged: Bool
-    let favourited: Bool
-    let sensitive: Bool
-    let spoilerText: String?
-    let visiblity: Visibility
-    let mediaAttachments: [Attachment]
-    let mentions: [Mention]
-    let tags: [Tag]
-    let application: Application?
+    public let id: Int
+    public let uri: String
+    public let url: URL
+    public let account: Account?
+    public let inReplyToId: AccountId?
+    public let inReplyToAccount: StatusId?
+    public let reblog: Status?
+    public let content: Html
+    public let createdAt: String
+    public let reblogsCount: Int
+    public let favouritesCount: Int
+    public let reblogged: Bool
+    public let favourited: Bool
+    public let sensitive: Bool
+    public let spoilerText: String?
+    public let visiblity: Visibility
+    public let mediaAttachments: [Attachment]
+    public let mentions: [Mention]
+    public let tags: [Tag]
+    public let application: Application?
     
-    required init?(json: JSON) {
+    public required init?(json: JSON) {
         guard
             let id: Int = "id" <~~ json,
             let uri: String = "uri" <~~ json,
