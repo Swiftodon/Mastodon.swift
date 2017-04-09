@@ -1,3 +1,4 @@
+import Foundation
 import RxSwift
 import Moya
 import Moya_Gloss

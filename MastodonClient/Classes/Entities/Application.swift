@@ -1,3 +1,4 @@
+import Foundation
 import Gloss
 
 struct Application: Decodable {

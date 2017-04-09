@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 This client can be used to interact with Mastodon instances. It`s recommended to be used with RxSwift.
                        DESC
 
-  s.homepage         = 'https://github.com/kimar/Mastodon.swift'
+  s.homepage         = 'https://github.com/Swiftodon/Mastodon.swift'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'git' => 'marcus@kida.io' }
@@ -29,6 +29,7 @@ This client can be used to interact with Mastodon instances. It`s recommended to
   # s.social_media_url = 'https://twitter.com/kidmar'
 
   s.ios.deployment_target = '9.0'
+  s.osx.deployment_target  = '10.10'
 
   s.source_files = 'MastodonClient/Classes/**/*'
   
