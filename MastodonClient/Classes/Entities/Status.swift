@@ -1,7 +1,7 @@
 import Foundation
 import Gloss
 
-public typealias StatusId = String
+public typealias StatusId = Int
 public typealias Html = String
 
 public class Status: Decodable {
@@ -11,7 +11,7 @@ public class Status: Decodable {
         case priv = "private"
         case direct = "direct"
     }
-    public let id: Int
+    public let id: StatusId
     public let uri: String
     public let url: URL
     public let account: Account?
