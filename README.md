@@ -1,6 +1,6 @@
 # MastodonClient
 
-[![CI Status](http://img.shields.io/travis/git/MastodonClient.svg?style=flat)](https://travis-ci.org/git/MastodonClient)
+[![CI Status](http://img.shields.io/travis/kimar/Mastodon.swift.svg?style=flat)](https://travis-ci.org/git/MastodonClient)
 [![Version](https://img.shields.io/cocoapods/v/MastodonClient.svg?style=flat)](http://cocoapods.org/pods/MastodonClient)
 [![License](https://img.shields.io/cocoapods/l/MastodonClient.svg?style=flat)](http://cocoapods.org/pods/MastodonClient)
 [![Platform](https://img.shields.io/cocoapods/p/MastodonClient.svg?style=flat)](http://cocoapods.org/pods/MastodonClient)
