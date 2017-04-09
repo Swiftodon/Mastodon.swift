@@ -6,6 +6,8 @@ public typealias Scope = String
 public typealias Scopes = [Scope]
 
 public class MastodonClient {
+    public init() {
+    }
     
     public var plugins = [PluginType]()
 
