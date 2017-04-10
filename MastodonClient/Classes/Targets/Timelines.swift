@@ -1,11 +1,14 @@
 import Foundation
 import Moya
 
+public typealias SinceId = StatusId
+public typealias MaxId = StatusId
+
 extension Mastodon {
     public enum Timelines {
-        case home
-        case pub(Bool) // Bool = local
-        case tag(String, Bool) // Bool = local
+        case home(MaxId?, SinceId?)
+        case pub(Bool, MaxId?, SinceId?) // Bool = local
+        case tag(String, Bool, MaxId?, SinceId?) // Bool = local
     }
 }
 
@@ -22,7 +25,7 @@ extension Mastodon.Timelines: TargetType {
             return "/home"
         case .pub(_):
             return "/public"
-        case .tag(let hashtag, _):
+        case .tag(let hashtag, _, _, _):
             return "/tag/\(hashtag)"
         }
     }
@@ -37,14 +40,32 @@ extension Mastodon.Timelines: TargetType {
     
     /// The parameters to be incoded in the request.
     public var parameters: [String: Any]? {
+        var params: [String : Any] = [:]
+        var local: Bool? = nil
+        var maxId: MaxId? = nil
+        var sinceId: SinceId? = nil
+
         switch self {
-        case .pub(let local), .tag(_, let local):
-            return [
-                "local": local
-            ]
-        default:
-            return nil
+        case .tag(_, let _local, let _maxId, let _sinceId),
+             .pub(let _local, let _maxId, let _sinceId):
+            local = _local
+            maxId = _maxId
+            sinceId = _sinceId
+        case .home(let _maxId, let _sinceId):
+            maxId = _maxId
+            sinceId = _sinceId
         }
+
+        if let maxId = maxId {
+            params["max_id"] = maxId
+        }
+        if let sinceId = sinceId {
+            params["since_id"] = sinceId
+        }
+        if let local = local {
+            params["local"] = local
+        }
+        return params
     }
     
     /// The method used for parameter encoding.
