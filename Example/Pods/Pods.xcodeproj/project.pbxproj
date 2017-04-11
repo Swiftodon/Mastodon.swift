@@ -266,6 +266,18 @@
 		E96B16FF1E9AD3810029D636 /* Result.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 64EF5C0B2302FBAED47D79358DEB28AF /* Result.xcconfig */; };
 		E96B17001E9AD38E0029D636 /* RxSwift.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 41DDD077EADA79D1CD74C883B8A990E8 /* RxSwift.xcconfig */; };
 		E96B17011E9AD3990029D636 /* MastodonClient.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C9365209186A73B7ABD16C6AC09C819F /* MastodonClient.xcconfig */; };
+		E96B17031E9BC3290029D636 /* Alamofire.framework in Copy Framework */ = {isa = PBXBuildFile; fileRef = 8E03E53FB81ED96ABE7AF04713CC348F /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E96B17041E9BC3290029D636 /* Gloss.framework in Copy Framework */ = {isa = PBXBuildFile; fileRef = 2BF9DB9314D00BEBFA245A591DD2B478 /* Gloss.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E96B17051E9BC3290029D636 /* Moya.framework in Copy Framework */ = {isa = PBXBuildFile; fileRef = 3E6CE0D062D40D6777D797D77BDBF8A3 /* Moya.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E96B17061E9BC32A0029D636 /* Moya_Gloss.framework in Copy Framework */ = {isa = PBXBuildFile; fileRef = C713D0D5CA7998AEA6791279CF6B7614 /* Moya_Gloss.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E96B17071E9BC32A0029D636 /* Result.framework in Copy Framework */ = {isa = PBXBuildFile; fileRef = 969DF4AE88FE290E6B377E0BA99A80A8 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E96B17081E9BC32A0029D636 /* RxSwift.framework in Copy Framework */ = {isa = PBXBuildFile; fileRef = 97CA1E2C97B81C4026DA3E94DF444D8D /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E96B170A1E9BC3750029D636 /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E9997EEC1E9AC8310019B689 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E96B170B1E9BC3750029D636 /* Gloss.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E9997F0D1E9AC9970019B689 /* Gloss.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E96B170C1E9BC3750029D636 /* Result.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E9997F231E9ACA290019B689 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E96B170D1E9BC3750029D636 /* RxSwift.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E9997F361E9ACB300019B689 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E96B170E1E9BC3750029D636 /* Moya.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E9997FE11E9ACBC90019B689 /* Moya.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E96B170F1E9BC3750029D636 /* Moya_Gloss.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E99980101E9ACCF80019B689 /* Moya_Gloss.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E9997EF51E9AC8790019B689 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9997EF41E9AC8780019B689 /* Foundation.framework */; };
 		E9997EF61E9AC8E60019B689 /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70492F835B21E41374AFADD9B08C6F2 /* AFError.swift */; };
 		E9997EF71E9AC8E60019B689 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6459A600FA75C6A522F6502EE7C483 /* Alamofire.swift */; };
@@ -816,6 +828,41 @@
 			remoteInfo = "Moya-Gloss";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E96B17021E9BC3050029D636 /* Copy Framework */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E96B17031E9BC3290029D636 /* Alamofire.framework in Copy Framework */,
+				E96B17041E9BC3290029D636 /* Gloss.framework in Copy Framework */,
+				E96B17051E9BC3290029D636 /* Moya.framework in Copy Framework */,
+				E96B17061E9BC32A0029D636 /* Moya_Gloss.framework in Copy Framework */,
+				E96B17071E9BC32A0029D636 /* Result.framework in Copy Framework */,
+				E96B17081E9BC32A0029D636 /* RxSwift.framework in Copy Framework */,
+			);
+			name = "Copy Framework";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E96B17091E9BC34F0029D636 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E96B170A1E9BC3750029D636 /* Alamofire.framework in Copy Frameworks */,
+				E96B170B1E9BC3750029D636 /* Gloss.framework in Copy Frameworks */,
+				E96B170C1E9BC3750029D636 /* Result.framework in Copy Frameworks */,
+				E96B170D1E9BC3750029D636 /* RxSwift.framework in Copy Frameworks */,
+				E96B170E1E9BC3750029D636 /* Moya.framework in Copy Frameworks */,
+				E96B170F1E9BC3750029D636 /* Moya_Gloss.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		00F2FB53C2FD55389C0C7886F7801D41 /* MastodonClient-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MastodonClient-dummy.m"; sourceTree = "<group>"; };
@@ -2170,6 +2217,7 @@
 				3F3AC1FC896CC94EEF20D3B08293F843 /* Sources */,
 				14AEE4985FC6DF4E2FC9AD6A0C0A0E5A /* Frameworks */,
 				5FB320362C4767036A38E2EA25517597 /* Headers */,
+				E96B17021E9BC3050029D636 /* Copy Framework */,
 			);
 			buildRules = (
 			);
@@ -2327,6 +2375,7 @@
 				E999802D1E9ACE0E0019B689 /* Frameworks */,
 				E999802E1E9ACE0E0019B689 /* Headers */,
 				E999802F1E9ACE0E0019B689 /* Resources */,
+				E96B17091E9BC34F0029D636 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
