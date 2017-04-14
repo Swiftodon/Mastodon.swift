@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_15"
-               BuildableName = "MastodonSwift.framework"
+               BlueprintIdentifier = "E90E61A71EA16B3300E2DC19"
+               BuildableName = "MastodonSwift-macOS.framework"
                BlueprintName = "MastodonSwift-macOS"
                ReferencedContainer = "container:MastodonSwift.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "OBJ_22"
-               BuildableName = "MastodonSwiftTests.xctest"
+               BuildableName = "MastodonSwift.xctest"
                BlueprintName = "MastodonSwiftTests"
                ReferencedContainer = "container:MastodonSwift.xcodeproj">
             </BuildableReference>
@@ -55,8 +55,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "OBJ_15"
-            BuildableName = "MastodonSwift.framework"
+            BlueprintIdentifier = "E90E61A71EA16B3300E2DC19"
+            BuildableName = "MastodonSwift-macOS.framework"
             BlueprintName = "MastodonSwift-macOS"
             ReferencedContainer = "container:MastodonSwift.xcodeproj">
          </BuildableReference>
