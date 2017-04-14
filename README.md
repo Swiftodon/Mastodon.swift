@@ -1,7 +1,6 @@
 # MastodonClient
 
 [![CI Status](http://img.shields.io/travis/kimar/Mastodon.swift.svg?style=flat)](https://travis-ci.org/git/MastodonClient)
-[![Version](https://img.shields.io/cocoapods/v/MastodonClient.svg?style=flat)](http://cocoapods.org/pods/MastodonClient)
 [![License](https://img.shields.io/cocoapods/l/MastodonClient.svg?style=flat)](http://cocoapods.org/pods/MastodonClient)
 [![Platform](https://img.shields.io/cocoapods/p/MastodonClient.svg?style=flat)](http://cocoapods.org/pods/MastodonClient)
 
@@ -44,21 +43,23 @@ RxMoyaProvider<Mastodon.Timelines>(plugins: [AccessTokenPlugin(token: accessToke
 ## Requirements
 
 * `Xcode 8.3 / Swift 3.1`
-* `Moya/RxSwift`
-* `Moya-Gloss/RxSwift`
+* `Alamofire`
+* `Moya`
+* `Gloss`
+* `RxSwift`
 
 ## Installation
 
-MastodonClient is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+### Using Carthage
 
-```ruby
-pod "MastodonClient"
+```
+github "Swiftodon/Mastodon.swift"
 ```
 
-## Author
+## Authors
 
-Marcus Kida <marcus@kida.io>
+* Marcus Kida <kidmar@mastodon.kida.io>
+* Thomas Bonk
 
 ## License
 
