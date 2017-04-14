@@ -1,6 +1,0 @@
-framework module Pods_MastodonClient_Tests {
-  umbrella header "Pods-MastodonClient_Tests-umbrella.h"
-
-  export *
-  module * { export * }
-}

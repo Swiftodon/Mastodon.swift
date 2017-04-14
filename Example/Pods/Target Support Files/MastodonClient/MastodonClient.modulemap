@@ -1,6 +1,0 @@
-framework module MastodonClient {
-  umbrella header "MastodonClient-umbrella.h"
-
-  export *
-  module * { export * }
-}
