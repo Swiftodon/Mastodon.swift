@@ -9,10 +9,10 @@
 #import <Cocoa/Cocoa.h>
 
 //! Project version number for MastodonSwift.
-FOUNDATION_EXPORT double MastodonSwiftVersionNumber;
+FOUNDATION_EXPORT double MastodonSwift_iOSVersionNumber;
 
 //! Project version string for MastodonSwift.
-FOUNDATION_EXPORT const unsigned char MastodonSwiftVersionString[];
+FOUNDATION_EXPORT const unsigned char MastodonSwift_iOSVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <MastodonSwift/PublicHeader.h>
 

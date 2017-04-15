@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		077037281EA0A83700AF238B /* MastodonSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 077037271EA0A83700AF238B /* MastodonSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		077037291EA0AD6B00AF238B /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1771E9CBF0400E5AEBC /* AccessToken.swift */; };
 		0770372A1EA0AD6B00AF238B /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1781E9CBF0400E5AEBC /* Account.swift */; };
 		0770372B1EA0AD6B00AF238B /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1791E9CBF0400E5AEBC /* App.swift */; };
@@ -109,6 +108,7 @@
 		E90E61E01EA16C0A00E2DC19 /* RxMoyaGloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90E619F1EA168AE00E2DC19 /* RxMoyaGloss.framework */; };
 		E90E61E11EA16C0A00E2DC19 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0770379F1EA0B24800AF238B /* RxSwift.framework */; };
 		E90E61E81EA16D5C00E2DC19 /* MastodonSwift-macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E90E61E71EA16D5C00E2DC19 /* MastodonSwift-macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E9D432641EA22B7C0057A883 /* MastodonSwift-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 077037271EA0A83700AF238B /* MastodonSwift-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		OBJ_27 /* MastodonSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* MastodonSwiftTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -150,7 +150,7 @@
 		0712B19B1E9CBF0400E5AEBC /* Statuses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statuses.swift; sourceTree = "<group>"; };
 		0712B19C1E9CBF0400E5AEBC /* Timelines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timelines.swift; sourceTree = "<group>"; };
 		0712B1C61E9CC26800E5AEBC /* MastodonSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MastodonSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		077037271EA0A83700AF238B /* MastodonSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MastodonSwift.h; sourceTree = "<group>"; };
+		077037271EA0A83700AF238B /* MastodonSwift-iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MastodonSwift-iOS.h"; sourceTree = "<group>"; };
 		077037951EA0B24800AF238B /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
 		077037961EA0B24800AF238B /* Gloss.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gloss.framework; path = Carthage/Build/Mac/Gloss.framework; sourceTree = "<group>"; };
 		077037971EA0B24800AF238B /* Moya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Moya.framework; path = Carthage/Build/Mac/Moya.framework; sourceTree = "<group>"; };
@@ -391,7 +391,7 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				077037271EA0A83700AF238B /* MastodonSwift.h */,
+				077037271EA0A83700AF238B /* MastodonSwift-iOS.h */,
 				0712B1761E9CBF0400E5AEBC /* Entities */,
 				0712B1871E9CBF0400E5AEBC /* Extensions */,
 				0712B18A1E9CBF0400E5AEBC /* MastodonClient.swift */,
@@ -416,7 +416,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				077037281EA0A83700AF238B /* MastodonSwift.h in Headers */,
+				E9D432641EA22B7C0057A883 /* MastodonSwift-iOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -979,6 +979,7 @@
 				E90E61AF1EA16B3300E2DC19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 		OBJ_2 /* Build configuration list for PBXProject "MastodonSwift" */ = {
 			isa = XCConfigurationList;
