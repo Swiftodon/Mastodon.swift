@@ -7,56 +7,57 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		077037291EA0AD6B00AF238B /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1771E9CBF0400E5AEBC /* AccessToken.swift */; };
-		0770372A1EA0AD6B00AF238B /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1781E9CBF0400E5AEBC /* Account.swift */; };
-		0770372B1EA0AD6B00AF238B /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1791E9CBF0400E5AEBC /* App.swift */; };
-		0770372C1EA0AD6B00AF238B /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B17A1E9CBF0400E5AEBC /* Application.swift */; };
-		0770372D1EA0AD6B00AF238B /* Attachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B17B1E9CBF0400E5AEBC /* Attachment.swift */; };
-		0770372E1EA0AD6B00AF238B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B17C1E9CBF0400E5AEBC /* Card.swift */; };
-		0770372F1EA0AD6B00AF238B /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B17D1E9CBF0400E5AEBC /* Context.swift */; };
-		077037301EA0AD6B00AF238B /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B17E1E9CBF0400E5AEBC /* Error.swift */; };
-		077037311EA0AD6B00AF238B /* Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B17F1E9CBF0400E5AEBC /* Instance.swift */; };
-		077037321EA0AD6B00AF238B /* Mention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1801E9CBF0400E5AEBC /* Mention.swift */; };
-		077037331EA0AD6B00AF238B /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1811E9CBF0400E5AEBC /* Notification.swift */; };
-		077037341EA0AD6B00AF238B /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1821E9CBF0400E5AEBC /* Relationship.swift */; };
-		077037351EA0AD6B00AF238B /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1831E9CBF0400E5AEBC /* Report.swift */; };
-		077037361EA0AD6B00AF238B /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1841E9CBF0400E5AEBC /* Result.swift */; };
-		077037371EA0AD6B00AF238B /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1851E9CBF0400E5AEBC /* Status.swift */; };
-		077037381EA0AD6B00AF238B /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1861E9CBF0400E5AEBC /* Tag.swift */; };
-		077037391EA0AD6B00AF238B /* String+AsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1881E9CBF0400E5AEBC /* String+AsURL.swift */; };
-		0770373A1EA0AD6B00AF238B /* URL+OptionalString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1891E9CBF0400E5AEBC /* URL+OptionalString.swift */; };
-		0770373B1EA0AD6B00AF238B /* MastodonClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B18A1E9CBF0400E5AEBC /* MastodonClient.swift */; };
-		0770373C1EA0AD6B00AF238B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B18B1E9CBF0400E5AEBC /* Settings.swift */; };
-		077037521EA0ADF700AF238B /* Accounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B18D1E9CBF0400E5AEBC /* Accounts.swift */; };
-		077037531EA0ADF700AF238B /* Apps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B18E1E9CBF0400E5AEBC /* Apps.swift */; };
-		077037541EA0ADF700AF238B /* Blocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B18F1E9CBF0400E5AEBC /* Blocks.swift */; };
-		077037551EA0ADF700AF238B /* Favourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1901E9CBF0400E5AEBC /* Favourites.swift */; };
-		077037561EA0ADF700AF238B /* FollowRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1911E9CBF0400E5AEBC /* FollowRequests.swift */; };
-		077037571EA0ADF700AF238B /* Follows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1921E9CBF0400E5AEBC /* Follows.swift */; };
-		077037581EA0ADF700AF238B /* Instances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1931E9CBF0400E5AEBC /* Instances.swift */; };
-		077037591EA0ADF700AF238B /* Mastodon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1941E9CBF0400E5AEBC /* Mastodon.swift */; };
-		0770375A1EA0ADF700AF238B /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1951E9CBF0400E5AEBC /* Media.swift */; };
-		0770375B1EA0ADF700AF238B /* Mutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1961E9CBF0400E5AEBC /* Mutes.swift */; };
-		0770375C1EA0ADF700AF238B /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1971E9CBF0400E5AEBC /* Notifications.swift */; };
-		0770375D1EA0ADF700AF238B /* OAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1981E9CBF0400E5AEBC /* OAuth.swift */; };
-		0770375E1EA0ADF700AF238B /* Reports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1991E9CBF0400E5AEBC /* Reports.swift */; };
-		0770375F1EA0ADF700AF238B /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B19A1E9CBF0400E5AEBC /* Search.swift */; };
-		077037601EA0ADF700AF238B /* Statuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B19B1E9CBF0400E5AEBC /* Statuses.swift */; };
-		077037611EA0ADF700AF238B /* Timelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B19C1E9CBF0400E5AEBC /* Timelines.swift */; };
-		077037BA1EA0B28C00AF238B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037AC1EA0B28C00AF238B /* Alamofire.framework */; };
-		077037BB1EA0B28C00AF238B /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037AD1EA0B28C00AF238B /* Gloss.framework */; };
-		077037BC1EA0B28C00AF238B /* Moya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037AE1EA0B28C00AF238B /* Moya.framework */; };
-		077037BD1EA0B28C00AF238B /* MoyaGloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037AF1EA0B28C00AF238B /* MoyaGloss.framework */; };
-		077037BE1EA0B28C00AF238B /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037B01EA0B28C00AF238B /* ReactiveCocoa.framework */; };
-		077037BF1EA0B28C00AF238B /* ReactiveMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037B11EA0B28C00AF238B /* ReactiveMoya.framework */; };
-		077037C01EA0B28C00AF238B /* ReactiveMoyaGloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037B21EA0B28C00AF238B /* ReactiveMoyaGloss.framework */; };
-		077037C11EA0B28C00AF238B /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037B31EA0B28C00AF238B /* ReactiveSwift.framework */; };
-		077037C21EA0B28C00AF238B /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037B41EA0B28C00AF238B /* Result.framework */; };
-		077037C31EA0B28C00AF238B /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037B51EA0B28C00AF238B /* RxBlocking.framework */; };
-		077037C41EA0B28C00AF238B /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037B61EA0B28C00AF238B /* RxCocoa.framework */; };
-		077037C51EA0B28C00AF238B /* RxMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037B71EA0B28C00AF238B /* RxMoya.framework */; };
-		077037C61EA0B28C00AF238B /* RxMoyaGloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037B81EA0B28C00AF238B /* RxMoyaGloss.framework */; };
-		077037C71EA0B28C00AF238B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037B91EA0B28C00AF238B /* RxSwift.framework */; };
+		070562751EA2EBE6006E74D4 /* MastodonSwift-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 070562731EA2EBE6006E74D4 /* MastodonSwift-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		070562791EA2EBFF006E74D4 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037AC1EA0B28C00AF238B /* Alamofire.framework */; };
+		0705627A1EA2EBFF006E74D4 /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037AD1EA0B28C00AF238B /* Gloss.framework */; };
+		0705627B1EA2EBFF006E74D4 /* Moya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037AE1EA0B28C00AF238B /* Moya.framework */; };
+		0705627C1EA2EBFF006E74D4 /* MoyaGloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037AF1EA0B28C00AF238B /* MoyaGloss.framework */; };
+		0705627D1EA2EBFF006E74D4 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037B01EA0B28C00AF238B /* ReactiveCocoa.framework */; };
+		0705627E1EA2EBFF006E74D4 /* ReactiveMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037B11EA0B28C00AF238B /* ReactiveMoya.framework */; };
+		0705627F1EA2EBFF006E74D4 /* ReactiveMoyaGloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037B21EA0B28C00AF238B /* ReactiveMoyaGloss.framework */; };
+		070562801EA2EBFF006E74D4 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037B31EA0B28C00AF238B /* ReactiveSwift.framework */; };
+		070562811EA2EBFF006E74D4 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037B41EA0B28C00AF238B /* Result.framework */; };
+		070562821EA2EBFF006E74D4 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037B51EA0B28C00AF238B /* RxBlocking.framework */; };
+		070562831EA2EBFF006E74D4 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037B61EA0B28C00AF238B /* RxCocoa.framework */; };
+		070562841EA2EBFF006E74D4 /* RxMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037B71EA0B28C00AF238B /* RxMoya.framework */; };
+		070562851EA2EBFF006E74D4 /* RxMoyaGloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037B81EA0B28C00AF238B /* RxMoyaGloss.framework */; };
+		070562861EA2EBFF006E74D4 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077037B91EA0B28C00AF238B /* RxSwift.framework */; };
+		075822F81EA2EEB400C6625C /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1771E9CBF0400E5AEBC /* AccessToken.swift */; };
+		075822F91EA2EEB400C6625C /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1781E9CBF0400E5AEBC /* Account.swift */; };
+		075822FA1EA2EEB400C6625C /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1791E9CBF0400E5AEBC /* App.swift */; };
+		075822FB1EA2EEB400C6625C /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B17A1E9CBF0400E5AEBC /* Application.swift */; };
+		075822FC1EA2EEB400C6625C /* Attachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B17B1E9CBF0400E5AEBC /* Attachment.swift */; };
+		075822FD1EA2EEB400C6625C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B17C1E9CBF0400E5AEBC /* Card.swift */; };
+		075822FE1EA2EEB400C6625C /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B17D1E9CBF0400E5AEBC /* Context.swift */; };
+		075822FF1EA2EEB400C6625C /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B17E1E9CBF0400E5AEBC /* Error.swift */; };
+		075823001EA2EEB400C6625C /* Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B17F1E9CBF0400E5AEBC /* Instance.swift */; };
+		075823011EA2EEB400C6625C /* Mention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1801E9CBF0400E5AEBC /* Mention.swift */; };
+		075823021EA2EEB400C6625C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1811E9CBF0400E5AEBC /* Notification.swift */; };
+		075823031EA2EEB400C6625C /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1821E9CBF0400E5AEBC /* Relationship.swift */; };
+		075823041EA2EEB400C6625C /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1831E9CBF0400E5AEBC /* Report.swift */; };
+		075823051EA2EEB400C6625C /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1841E9CBF0400E5AEBC /* Result.swift */; };
+		075823061EA2EEB400C6625C /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1851E9CBF0400E5AEBC /* Status.swift */; };
+		075823071EA2EEB400C6625C /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1861E9CBF0400E5AEBC /* Tag.swift */; };
+		075823081EA2EEB400C6625C /* String+AsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1881E9CBF0400E5AEBC /* String+AsURL.swift */; };
+		075823091EA2EEB400C6625C /* URL+OptionalString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1891E9CBF0400E5AEBC /* URL+OptionalString.swift */; };
+		0758230A1EA2EEB400C6625C /* MastodonClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B18A1E9CBF0400E5AEBC /* MastodonClient.swift */; };
+		0758230B1EA2EEB400C6625C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B18B1E9CBF0400E5AEBC /* Settings.swift */; };
+		0758230C1EA2EEB400C6625C /* Accounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B18D1E9CBF0400E5AEBC /* Accounts.swift */; };
+		0758230D1EA2EEB400C6625C /* Apps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B18E1E9CBF0400E5AEBC /* Apps.swift */; };
+		0758230E1EA2EEB400C6625C /* Blocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B18F1E9CBF0400E5AEBC /* Blocks.swift */; };
+		0758230F1EA2EEB400C6625C /* Favourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1901E9CBF0400E5AEBC /* Favourites.swift */; };
+		075823101EA2EEB400C6625C /* FollowRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1911E9CBF0400E5AEBC /* FollowRequests.swift */; };
+		075823111EA2EEB400C6625C /* Follows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1921E9CBF0400E5AEBC /* Follows.swift */; };
+		075823121EA2EEB400C6625C /* Instances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1931E9CBF0400E5AEBC /* Instances.swift */; };
+		075823131EA2EEB400C6625C /* Mastodon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1941E9CBF0400E5AEBC /* Mastodon.swift */; };
+		075823141EA2EEB400C6625C /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1951E9CBF0400E5AEBC /* Media.swift */; };
+		075823151EA2EEB400C6625C /* Mutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1961E9CBF0400E5AEBC /* Mutes.swift */; };
+		075823161EA2EEB400C6625C /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1971E9CBF0400E5AEBC /* Notifications.swift */; };
+		075823171EA2EEB400C6625C /* OAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1981E9CBF0400E5AEBC /* OAuth.swift */; };
+		075823181EA2EEB400C6625C /* Reports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1991E9CBF0400E5AEBC /* Reports.swift */; };
+		075823191EA2EEB400C6625C /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B19A1E9CBF0400E5AEBC /* Search.swift */; };
+		0758231A1EA2EEB400C6625C /* Statuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B19B1E9CBF0400E5AEBC /* Statuses.swift */; };
+		0758231B1EA2EEB400C6625C /* Timelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B19C1E9CBF0400E5AEBC /* Timelines.swift */; };
 		E90E61B01EA16BC900E2DC19 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1771E9CBF0400E5AEBC /* AccessToken.swift */; };
 		E90E61B11EA16BC900E2DC19 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1781E9CBF0400E5AEBC /* Account.swift */; };
 		E90E61B21EA16BC900E2DC19 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1791E9CBF0400E5AEBC /* App.swift */; };
@@ -108,11 +109,13 @@
 		E90E61E01EA16C0A00E2DC19 /* RxMoyaGloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E90E619F1EA168AE00E2DC19 /* RxMoyaGloss.framework */; };
 		E90E61E11EA16C0A00E2DC19 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0770379F1EA0B24800AF238B /* RxSwift.framework */; };
 		E90E61E81EA16D5C00E2DC19 /* MastodonSwift-macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E90E61E71EA16D5C00E2DC19 /* MastodonSwift-macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E9D432641EA22B7C0057A883 /* MastodonSwift-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 077037271EA0A83700AF238B /* MastodonSwift-iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		OBJ_27 /* MastodonSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* MastodonSwiftTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		070562711EA2EBE6006E74D4 /* MastodonSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MastodonSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		070562731EA2EBE6006E74D4 /* MastodonSwift-iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MastodonSwift-iOS.h"; sourceTree = "<group>"; };
+		070562741EA2EBE6006E74D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0712B1771E9CBF0400E5AEBC /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		0712B1781E9CBF0400E5AEBC /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		0712B1791E9CBF0400E5AEBC /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -149,8 +152,6 @@
 		0712B19A1E9CBF0400E5AEBC /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		0712B19B1E9CBF0400E5AEBC /* Statuses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statuses.swift; sourceTree = "<group>"; };
 		0712B19C1E9CBF0400E5AEBC /* Timelines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timelines.swift; sourceTree = "<group>"; };
-		0712B1C61E9CC26800E5AEBC /* MastodonSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MastodonSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		077037271EA0A83700AF238B /* MastodonSwift-iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MastodonSwift-iOS.h"; sourceTree = "<group>"; };
 		077037951EA0B24800AF238B /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
 		077037961EA0B24800AF238B /* Gloss.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gloss.framework; path = Carthage/Build/Mac/Gloss.framework; sourceTree = "<group>"; };
 		077037971EA0B24800AF238B /* Moya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Moya.framework; path = Carthage/Build/Mac/Moya.framework; sourceTree = "<group>"; };
@@ -189,24 +190,24 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0712B1C21E9CC26800E5AEBC /* Frameworks */ = {
+		0705626D1EA2EBE6006E74D4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				077037BA1EA0B28C00AF238B /* Alamofire.framework in Frameworks */,
-				077037BB1EA0B28C00AF238B /* Gloss.framework in Frameworks */,
-				077037BC1EA0B28C00AF238B /* Moya.framework in Frameworks */,
-				077037BD1EA0B28C00AF238B /* MoyaGloss.framework in Frameworks */,
-				077037BE1EA0B28C00AF238B /* ReactiveCocoa.framework in Frameworks */,
-				077037BF1EA0B28C00AF238B /* ReactiveMoya.framework in Frameworks */,
-				077037C01EA0B28C00AF238B /* ReactiveMoyaGloss.framework in Frameworks */,
-				077037C11EA0B28C00AF238B /* ReactiveSwift.framework in Frameworks */,
-				077037C21EA0B28C00AF238B /* Result.framework in Frameworks */,
-				077037C31EA0B28C00AF238B /* RxBlocking.framework in Frameworks */,
-				077037C41EA0B28C00AF238B /* RxCocoa.framework in Frameworks */,
-				077037C51EA0B28C00AF238B /* RxMoya.framework in Frameworks */,
-				077037C61EA0B28C00AF238B /* RxMoyaGloss.framework in Frameworks */,
-				077037C71EA0B28C00AF238B /* RxSwift.framework in Frameworks */,
+				070562791EA2EBFF006E74D4 /* Alamofire.framework in Frameworks */,
+				0705627A1EA2EBFF006E74D4 /* Gloss.framework in Frameworks */,
+				0705627B1EA2EBFF006E74D4 /* Moya.framework in Frameworks */,
+				0705627C1EA2EBFF006E74D4 /* MoyaGloss.framework in Frameworks */,
+				0705627D1EA2EBFF006E74D4 /* ReactiveCocoa.framework in Frameworks */,
+				0705627E1EA2EBFF006E74D4 /* ReactiveMoya.framework in Frameworks */,
+				0705627F1EA2EBFF006E74D4 /* ReactiveMoyaGloss.framework in Frameworks */,
+				070562801EA2EBFF006E74D4 /* ReactiveSwift.framework in Frameworks */,
+				070562811EA2EBFF006E74D4 /* Result.framework in Frameworks */,
+				070562821EA2EBFF006E74D4 /* RxBlocking.framework in Frameworks */,
+				070562831EA2EBFF006E74D4 /* RxCocoa.framework in Frameworks */,
+				070562841EA2EBFF006E74D4 /* RxMoya.framework in Frameworks */,
+				070562851EA2EBFF006E74D4 /* RxMoyaGloss.framework in Frameworks */,
+				070562861EA2EBFF006E74D4 /* RxSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +242,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		070562721EA2EBE6006E74D4 /* MastodonSwift-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				070562731EA2EBE6006E74D4 /* MastodonSwift-iOS.h */,
+				070562741EA2EBE6006E74D4 /* Info.plist */,
+			);
+			path = "MastodonSwift-iOS";
+			sourceTree = "<group>";
+		};
 		0712B1761E9CBF0400E5AEBC /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,8 +380,8 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_14 /* MastodonSwiftTests.xctest */,
-				0712B1C61E9CC26800E5AEBC /* MastodonSwift.framework */,
 				E90E61A81EA16B3300E2DC19 /* MastodonSwift.framework */,
+				070562711EA2EBE6006E74D4 /* MastodonSwift.framework */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -382,6 +392,7 @@
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
 				E90E61E31EA16C9A00E2DC19 /* MastodonSwift-macOS */,
+				070562721EA2EBE6006E74D4 /* MastodonSwift-iOS */,
 				OBJ_9 /* Tests */,
 				OBJ_12 /* Products */,
 				0770373D1EA0ADA500AF238B /* Frameworks */,
@@ -391,7 +402,6 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				077037271EA0A83700AF238B /* MastodonSwift-iOS.h */,
 				0712B1761E9CBF0400E5AEBC /* Entities */,
 				0712B1871E9CBF0400E5AEBC /* Extensions */,
 				0712B18A1E9CBF0400E5AEBC /* MastodonClient.swift */,
@@ -412,11 +422,11 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		0712B1C31E9CC26800E5AEBC /* Headers */ = {
+		0705626E1EA2EBE6006E74D4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9D432641EA22B7C0057A883 /* MastodonSwift-iOS.h in Headers */,
+				070562751EA2EBE6006E74D4 /* MastodonSwift-iOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,14 +441,14 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0712B1C51E9CC26800E5AEBC /* MastodonSwift-iOS */ = {
+		070562701EA2EBE6006E74D4 /* MastodonSwift-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0712B1CB1E9CC26900E5AEBC /* Build configuration list for PBXNativeTarget "MastodonSwift-iOS" */;
+			buildConfigurationList = 070562761EA2EBE6006E74D4 /* Build configuration list for PBXNativeTarget "MastodonSwift-iOS" */;
 			buildPhases = (
-				0712B1C11E9CC26800E5AEBC /* Sources */,
-				0712B1C21E9CC26800E5AEBC /* Frameworks */,
-				0712B1C31E9CC26800E5AEBC /* Headers */,
-				0712B1C41E9CC26800E5AEBC /* Resources */,
+				0705626C1EA2EBE6006E74D4 /* Sources */,
+				0705626D1EA2EBE6006E74D4 /* Frameworks */,
+				0705626E1EA2EBE6006E74D4 /* Headers */,
+				0705626F1EA2EBE6006E74D4 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -446,7 +456,7 @@
 			);
 			name = "MastodonSwift-iOS";
 			productName = "MastodonSwift-iOS";
-			productReference = 0712B1C61E9CC26800E5AEBC /* MastodonSwift.framework */;
+			productReference = 070562711EA2EBE6006E74D4 /* MastodonSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		E90E61A71EA16B3300E2DC19 /* MastodonSwift-macOS */ = {
@@ -491,7 +501,7 @@
 			attributes = {
 				LastUpgradeCheck = 9999;
 				TargetAttributes = {
-					0712B1C51E9CC26800E5AEBC = {
+					070562701EA2EBE6006E74D4 = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = 857XYUU5FE;
 						ProvisioningStyle = Automatic;
@@ -514,7 +524,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0712B1C51E9CC26800E5AEBC /* MastodonSwift-iOS */,
+				070562701EA2EBE6006E74D4 /* MastodonSwift-iOS */,
 				E90E61A71EA16B3300E2DC19 /* MastodonSwift-macOS */,
 				OBJ_22 /* MastodonSwiftTests */,
 			);
@@ -522,7 +532,7 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0712B1C41E9CC26800E5AEBC /* Resources */ = {
+		0705626F1EA2EBE6006E74D4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -539,46 +549,46 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0712B1C11E9CC26800E5AEBC /* Sources */ = {
+		0705626C1EA2EBE6006E74D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				077037611EA0ADF700AF238B /* Timelines.swift in Sources */,
-				0770373B1EA0AD6B00AF238B /* MastodonClient.swift in Sources */,
-				077037531EA0ADF700AF238B /* Apps.swift in Sources */,
-				077037381EA0AD6B00AF238B /* Tag.swift in Sources */,
-				077037301EA0AD6B00AF238B /* Error.swift in Sources */,
-				0770373A1EA0AD6B00AF238B /* URL+OptionalString.swift in Sources */,
-				0770375E1EA0ADF700AF238B /* Reports.swift in Sources */,
-				0770372C1EA0AD6B00AF238B /* Application.swift in Sources */,
-				077037601EA0ADF700AF238B /* Statuses.swift in Sources */,
-				0770372E1EA0AD6B00AF238B /* Card.swift in Sources */,
-				0770375D1EA0ADF700AF238B /* OAuth.swift in Sources */,
-				0770372B1EA0AD6B00AF238B /* App.swift in Sources */,
-				077037361EA0AD6B00AF238B /* Result.swift in Sources */,
-				077037311EA0AD6B00AF238B /* Instance.swift in Sources */,
-				077037591EA0ADF700AF238B /* Mastodon.swift in Sources */,
-				0770375A1EA0ADF700AF238B /* Media.swift in Sources */,
-				077037571EA0ADF700AF238B /* Follows.swift in Sources */,
-				077037351EA0AD6B00AF238B /* Report.swift in Sources */,
-				0770372F1EA0AD6B00AF238B /* Context.swift in Sources */,
-				077037321EA0AD6B00AF238B /* Mention.swift in Sources */,
-				077037341EA0AD6B00AF238B /* Relationship.swift in Sources */,
-				077037291EA0AD6B00AF238B /* AccessToken.swift in Sources */,
-				077037521EA0ADF700AF238B /* Accounts.swift in Sources */,
-				0770375F1EA0ADF700AF238B /* Search.swift in Sources */,
-				0770373C1EA0AD6B00AF238B /* Settings.swift in Sources */,
-				0770375B1EA0ADF700AF238B /* Mutes.swift in Sources */,
-				077037541EA0ADF700AF238B /* Blocks.swift in Sources */,
-				077037371EA0AD6B00AF238B /* Status.swift in Sources */,
-				077037551EA0ADF700AF238B /* Favourites.swift in Sources */,
-				077037391EA0AD6B00AF238B /* String+AsURL.swift in Sources */,
-				077037331EA0AD6B00AF238B /* Notification.swift in Sources */,
-				077037581EA0ADF700AF238B /* Instances.swift in Sources */,
-				077037561EA0ADF700AF238B /* FollowRequests.swift in Sources */,
-				0770375C1EA0ADF700AF238B /* Notifications.swift in Sources */,
-				0770372A1EA0AD6B00AF238B /* Account.swift in Sources */,
-				0770372D1EA0AD6B00AF238B /* Attachment.swift in Sources */,
+				0758231B1EA2EEB400C6625C /* Timelines.swift in Sources */,
+				0758230A1EA2EEB400C6625C /* MastodonClient.swift in Sources */,
+				0758230D1EA2EEB400C6625C /* Apps.swift in Sources */,
+				075823071EA2EEB400C6625C /* Tag.swift in Sources */,
+				075822FF1EA2EEB400C6625C /* Error.swift in Sources */,
+				075823091EA2EEB400C6625C /* URL+OptionalString.swift in Sources */,
+				075823181EA2EEB400C6625C /* Reports.swift in Sources */,
+				075822FB1EA2EEB400C6625C /* Application.swift in Sources */,
+				0758231A1EA2EEB400C6625C /* Statuses.swift in Sources */,
+				075822FD1EA2EEB400C6625C /* Card.swift in Sources */,
+				075823171EA2EEB400C6625C /* OAuth.swift in Sources */,
+				075822FA1EA2EEB400C6625C /* App.swift in Sources */,
+				075823051EA2EEB400C6625C /* Result.swift in Sources */,
+				075823001EA2EEB400C6625C /* Instance.swift in Sources */,
+				075823131EA2EEB400C6625C /* Mastodon.swift in Sources */,
+				075823141EA2EEB400C6625C /* Media.swift in Sources */,
+				075823111EA2EEB400C6625C /* Follows.swift in Sources */,
+				075823041EA2EEB400C6625C /* Report.swift in Sources */,
+				075822FE1EA2EEB400C6625C /* Context.swift in Sources */,
+				075823011EA2EEB400C6625C /* Mention.swift in Sources */,
+				075823031EA2EEB400C6625C /* Relationship.swift in Sources */,
+				075822F81EA2EEB400C6625C /* AccessToken.swift in Sources */,
+				0758230C1EA2EEB400C6625C /* Accounts.swift in Sources */,
+				075823191EA2EEB400C6625C /* Search.swift in Sources */,
+				0758230B1EA2EEB400C6625C /* Settings.swift in Sources */,
+				075823151EA2EEB400C6625C /* Mutes.swift in Sources */,
+				0758230E1EA2EEB400C6625C /* Blocks.swift in Sources */,
+				075823061EA2EEB400C6625C /* Status.swift in Sources */,
+				0758230F1EA2EEB400C6625C /* Favourites.swift in Sources */,
+				075823081EA2EEB400C6625C /* String+AsURL.swift in Sources */,
+				075823021EA2EEB400C6625C /* Notification.swift in Sources */,
+				075823121EA2EEB400C6625C /* Instances.swift in Sources */,
+				075823101EA2EEB400C6625C /* FollowRequests.swift in Sources */,
+				075823161EA2EEB400C6625C /* Notifications.swift in Sources */,
+				075822F91EA2EEB400C6625C /* Account.swift in Sources */,
+				075822FC1EA2EEB400C6625C /* Attachment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,7 +646,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		0712B1CC1E9CC26900E5AEBC /* Debug */ = {
+		070562771EA2EBE6006E74D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -685,15 +695,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "MastodonSwift.xcodeproj/MastodonSwiftiOS-Info.plist";
+				INFOPLIST_FILE = "MastodonSwift-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.kida.MastodonSwift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -701,7 +709,7 @@
 			};
 			name = Debug;
 		};
-		0712B1CD1E9CC26900E5AEBC /* Release */ = {
+		070562781EA2EBE6006E74D4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -746,15 +754,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "MastodonSwift.xcodeproj/MastodonSwiftiOS-Info.plist";
+				INFOPLIST_FILE = "MastodonSwift-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = io.kida.MastodonSwift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -814,8 +820,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.kida.MastodonSwift;
-				PRODUCT_NAME = MastodonSwift;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -874,8 +878,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = io.kida.MastodonSwift;
-				PRODUCT_NAME = MastodonSwift;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -933,6 +935,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_BUNDLE_IDENTIFIER = io.kida.MastodonSwift;
 				PRODUCT_NAME = MastodonSwift;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -952,6 +955,7 @@
 				GCC_OPTIMIZATION_LEVEL = s;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_BUNDLE_IDENTIFIER = io.kida.MastodonSwift;
 				PRODUCT_NAME = MastodonSwift;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -963,11 +967,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0712B1CB1E9CC26900E5AEBC /* Build configuration list for PBXNativeTarget "MastodonSwift-iOS" */ = {
+		070562761EA2EBE6006E74D4 /* Build configuration list for PBXNativeTarget "MastodonSwift-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0712B1CC1E9CC26900E5AEBC /* Debug */,
-				0712B1CD1E9CC26900E5AEBC /* Release */,
+				070562771EA2EBE6006E74D4 /* Debug */,
+				070562781EA2EBE6006E74D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
