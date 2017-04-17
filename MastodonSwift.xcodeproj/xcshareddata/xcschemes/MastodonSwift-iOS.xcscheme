@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0712B1C51E9CC26800E5AEBC"
+               BlueprintIdentifier = "070562701EA2EBE6006E74D4"
                BuildableName = "MastodonSwift.framework"
                BlueprintName = "MastodonSwift-iOS"
                ReferencedContainer = "container:MastodonSwift.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0712B1C51E9CC26800E5AEBC"
+            BlueprintIdentifier = "070562701EA2EBE6006E74D4"
             BuildableName = "MastodonSwift.framework"
             BlueprintName = "MastodonSwift-iOS"
             ReferencedContainer = "container:MastodonSwift.xcodeproj">
@@ -63,7 +63,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0712B1C51E9CC26800E5AEBC"
+            BlueprintIdentifier = "070562701EA2EBE6006E74D4"
             BuildableName = "MastodonSwift.framework"
             BlueprintName = "MastodonSwift-iOS"
             ReferencedContainer = "container:MastodonSwift.xcodeproj">
