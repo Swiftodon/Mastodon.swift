@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'MastodonClient'
-  s.version          = '1.0.1'
+  s.version          = '1.0.2'
   s.summary          = 'A Swift / RxSwift / Moya / Gloss based API client for Mastodon instances.'
 
   s.description      = <<-DESC
