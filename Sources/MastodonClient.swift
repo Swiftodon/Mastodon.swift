@@ -2,9 +2,14 @@ import Foundation
 import Alamofire
 import Moya
 import RxSwift
+
+#if COCOAPODS
+import Moya_Gloss
+#else
 import RxMoya
 import MoyaGloss
 import RxMoyaGloss
+#endif
 
 public typealias Scope = String
 public typealias Scopes = [Scope]
