@@ -15,7 +15,7 @@ This client can be used to interact with Mastodon instances. It`s recommended to
   s.ios.deployment_target = '9.0'
   s.osx.deployment_target = '10.10'
 
-  s.source_files = 'Sources/**/*'
+  s.source_files = 'Sources/**/*.swift'
 
   s.dependency 'Moya/RxSwift', '~> 8.0.3'
   s.dependency 'Moya-Gloss/RxSwift', '~> 2.0.0'
