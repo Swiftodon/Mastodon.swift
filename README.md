@@ -59,7 +59,7 @@ github "Swiftodon/Mastodon.swift"
 ## Authors
 
 * Marcus Kida <kidmar@mastodon.kida.io>
-* Thomas Bonk
+* Thomas Bonk <thomas@meandmymac.de>
 
 ## License
 
