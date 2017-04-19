@@ -3,7 +3,7 @@ import Moya
 
 extension Mastodon {
     public enum Search {
-        case search(SearchQuery, Bool)
+        case search(URL, SearchQuery, Bool)
     }
 }
 
@@ -11,13 +11,16 @@ extension Mastodon {
 extension Mastodon.Search: TargetType {
     /// The target's base `URL`.
     public var baseURL: URL {
-        return Settings.shared.baseURL!.appendingPathComponent("/api/v1/search")
+        switch self {
+        case .search(let url, _, _):
+            return url.appendingPathComponent("/api/v1/search")
+        }
     }
     
     /// The path to be appended to `baseURL` to form the full `URL`.
     public var path: String {
         switch self {
-        case .search(_):
+        case .search(_, _, _):
             return "/"
         }
     }
@@ -33,7 +36,7 @@ extension Mastodon.Search: TargetType {
     /// The parameters to be incoded in the request.
     public var parameters: [String: Any]? {
         switch self {
-        case .search(let query, let resolveNonLocal):
+        case .search(_, let query, let resolveNonLocal):
             return [
                 "q": query,
                 "resolve": resolveNonLocal

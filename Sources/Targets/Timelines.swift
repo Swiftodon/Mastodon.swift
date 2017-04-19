@@ -6,16 +6,19 @@ public typealias MaxId = StatusId
 
 extension Mastodon {
     public enum Timelines {
-        case home(MaxId?, SinceId?)
-        case pub(Bool, MaxId?, SinceId?) // Bool = local
-        case tag(String, Bool, MaxId?, SinceId?) // Bool = local
+        case home(URL, MaxId?, SinceId?)
+        case pub(URL, Bool, MaxId?, SinceId?) // Bool = local
+        case tag(URL, String, Bool, MaxId?, SinceId?) // Bool = local
     }
 }
 
 extension Mastodon.Timelines: TargetType {
     /// The target's base `URL`.
     public var baseURL: URL {
-        return Settings.shared.baseURL!.appendingPathComponent("/api/v1/timelines")
+        switch self {
+        case .home(let url, _, _), .pub(let url, _, _, _), .tag(let url, _, _, _, _):
+            return url.appendingPathComponent("/api/v1/timelines")
+        }
     }
     
     /// The path to be appended to `baseURL` to form the full `URL`.
@@ -23,9 +26,9 @@ extension Mastodon.Timelines: TargetType {
         switch self {
         case .home:
             return "/home"
-        case .pub(_):
+        case .pub:
             return "/public"
-        case .tag(let hashtag, _, _, _):
+        case .tag(_, let hashtag, _, _, _):
             return "/tag/\(hashtag)"
         }
     }
@@ -46,12 +49,12 @@ extension Mastodon.Timelines: TargetType {
         var sinceId: SinceId? = nil
 
         switch self {
-        case .tag(_, let _local, let _maxId, let _sinceId),
-             .pub(let _local, let _maxId, let _sinceId):
+        case .tag(_, _, let _local, let _maxId, let _sinceId),
+             .pub(_, let _local, let _maxId, let _sinceId):
             local = _local
             maxId = _maxId
             sinceId = _sinceId
-        case .home(let _maxId, let _sinceId):
+        case .home(_, let _maxId, let _sinceId):
             maxId = _maxId
             sinceId = _sinceId
         }

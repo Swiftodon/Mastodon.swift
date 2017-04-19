@@ -31,30 +31,30 @@ public class MastodonClient {
             .mapObject(type: AccessToken.self)
     }
 
-    public func getHomeTimeline(_ token: String, maxId: StatusId? = nil, sinceId: StatusId? = nil) -> Observable<[Status]> {
+    public func getHomeTimeline(_ serverUrl: URL, _ token: String, maxId: StatusId? = nil, sinceId: StatusId? = nil) -> Observable<[Status]> {
         let accessToken = AccessTokenPlugin(token: token)
         return RxMoyaProvider<Mastodon.Timelines>(
                 plugins: [plugins, [accessToken]].flatMap { $0 }
             )
-            .request(.home(maxId, sinceId))
+            .request(.home(serverUrl, maxId, sinceId))
             .mapArray(type: Status.self)
     }
 
-    public func getPublicTimeline(_ token: String, isLocal: Bool = false, maxId: StatusId? = nil, sinceId: StatusId? = nil) -> Observable<[Status]> {
+    public func getPublicTimeline(_ serverUrl: URL, _ token: String, isLocal: Bool = false, maxId: StatusId? = nil, sinceId: StatusId? = nil) -> Observable<[Status]> {
         let accessToken = AccessTokenPlugin(token: token)
         return RxMoyaProvider<Mastodon.Timelines>(
                 plugins: [plugins, [accessToken]].flatMap { $0 }
             )
-            .request(.pub(isLocal, maxId, sinceId))
+            .request(.pub(serverUrl, isLocal, maxId, sinceId))
             .mapArray(type: Status.self)
     }
 
-    public func getTagTimeline(_ token: String, tag: String, isLocal: Bool = false, maxId: StatusId? = nil, sinceId: StatusId? = nil) -> Observable<[Status]> {
+    public func getTagTimeline(_ serverUrl: URL, _ token: String, tag: String, isLocal: Bool = false, maxId: StatusId? = nil, sinceId: StatusId? = nil) -> Observable<[Status]> {
         let accessToken = AccessTokenPlugin(token: token)
         return RxMoyaProvider<Mastodon.Timelines>(
                 plugins: [plugins, [accessToken]].flatMap { $0 }
             )
-            .request(.tag(tag, isLocal, maxId, sinceId))
+            .request(.tag(serverUrl, tag, isLocal, maxId, sinceId))
             .mapArray(type: Status.self)
     }
 }
