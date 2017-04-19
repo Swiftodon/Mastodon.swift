@@ -3,16 +3,19 @@ import Moya
 
 extension Mastodon {
     public enum FollowRequests {
-        case followRequests
-        case authorize(String)
-        case reject(String)
+        case followRequests(URL)
+        case authorize(URL, String)
+        case reject(URL, String)
     }
 }
 
 extension Mastodon.FollowRequests: TargetType {
     /// The target's base `URL`.
     public var baseURL: URL {
-        return Settings.shared.baseURL!.appendingPathComponent("/api/v1/follow_requests")
+        switch self {
+        case .followRequests(let url), .authorize(let url, _), .reject(let url, _):
+            return url.appendingPathComponent("/api/v1/follow_requests")
+        }
     }
     
     /// The path to be appended to `baseURL` to form the full `URL`.
@@ -20,9 +23,9 @@ extension Mastodon.FollowRequests: TargetType {
         switch self {
         case .followRequests:
             return "/"
-        case .authorize(_):
+        case .authorize(_, _):
             return "/authorize"
-        case .reject(_):
+        case .reject(_, _):
             return "/reject"
         }
     }
@@ -32,7 +35,7 @@ extension Mastodon.FollowRequests: TargetType {
         switch self {
         case .followRequests:
             return .get
-        case .authorize(_), .reject(_):
+        case .authorize(_, _), .reject(_, _):
             return .post
         }
     }
@@ -42,7 +45,7 @@ extension Mastodon.FollowRequests: TargetType {
         switch self {
         case .followRequests:
             return nil
-        case .authorize(let id), .reject(let id):
+        case .authorize(_, let id), .reject(_, let id):
             return [
                 "id": id
             ]

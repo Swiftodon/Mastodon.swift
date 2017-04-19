@@ -3,14 +3,17 @@ import Moya
 
 extension Mastodon {
     public enum Blocks {
-        case blocks
+        case blocks(URL)
     }
 }
 
 extension Mastodon.Blocks: TargetType {
     /// The target's base `URL`.
     public var baseURL: URL {
-        return Settings.shared.baseURL!.appendingPathComponent("/api/v1/blocks")
+        switch self {
+        case .blocks(let url):
+            return url.appendingPathComponent("/api/v1/blocks")
+        }
     }
     
     /// The path to be appended to `baseURL` to form the full `URL`.

@@ -3,21 +3,24 @@ import Moya
 
 extension Mastodon {
     public enum Reports {
-        case list
-        case report(String, [String], String)
+        case list(URL)
+        case report(URL, String, [String], String)
     }
 }
 
 extension Mastodon.Reports: TargetType {
     /// The target's base `URL`.
     public var baseURL: URL {
-        return Settings.shared.baseURL!.appendingPathComponent("/api/v1/reports")
+        switch self {
+        case .list(let url), .report(let url, _, _, _):
+            return url.appendingPathComponent("/api/v1/reports")
+        }
     }
     
     /// The path to be appended to `baseURL` to form the full `URL`.
     public var path: String {
         switch self {
-        case .list, .report(_, _, _):
+        case .list, .report(_, _, _, _):
             return "/"
         }
     }
@@ -27,7 +30,7 @@ extension Mastodon.Reports: TargetType {
         switch self {
         case .list:
             return .get
-        case .report(_, _, _):
+        case .report(_, _, _, _):
             return .post
         }
     }
@@ -37,7 +40,7 @@ extension Mastodon.Reports: TargetType {
         switch self {
         case .list:
             return nil
-        case .report(let accountId, let statusIds, let comment):
+        case .report(_, let accountId, let statusIds, let comment):
             return [
                 "account_id": accountId,
                 "status_ids": statusIds,

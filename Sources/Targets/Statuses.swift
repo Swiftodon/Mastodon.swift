@@ -9,50 +9,56 @@ extension Mastodon {
             case unlisted = "unlisted"
             case pub = "public"
         }
-        case status(String)
-        case context(String)
-        case card(String)
-        case rebloggedBy(String)
-        case favouritedBy(String)
-        case new(String, String?, [String]?, Bool, String, Visibility)
-        case delete(String)
-        case reblog(String)
-        case unreblog(String)
-        case favourite(String)
-        case unfavourite(String)
+        case status(URL, String)
+        case context(URL, String)
+        case card(URL, String)
+        case rebloggedBy(URL, String)
+        case favouritedBy(URL, String)
+        case new(URL, String, String?, [String]?, Bool, String, Visibility)
+        case delete(URL, String)
+        case reblog(URL, String)
+        case unreblog(URL, String)
+        case favourite(URL, String)
+        case unfavourite(URL, String)
     }
 }
 
 extension Mastodon.Statuses: TargetType {
     /// The target's base `URL`.
     public var baseURL: URL {
-        return Settings.shared.baseURL!.appendingPathComponent("/api/v1/statuses")
+        switch self {
+        case .status(let url, _), .context(let url, _), .card(let url, _), .rebloggedBy(let url, _),
+             .favouritedBy(let url, _), .new(let url, _, _, _, _, _, _),
+             .delete(let url, _), .reblog(let url, _), .unreblog(let url, _), .favourite(let url, _),
+             .unfavourite(let url, _):
+            return url.appendingPathComponent("/api/v1/statuses")
+        }
     }
     
     /// The path to be appended to `baseURL` to form the full `URL`.
     public var path: String {
         switch self {
-        case .status(let id):
+        case .status(_, let id):
             return "/\(id)"
-        case .context(let id):
+        case .context(_, let id):
             return "/\(id)/context"
-        case .card(let id):
+        case .card(_, let id):
             return "/\(id)/card"
-        case .rebloggedBy(let id):
+        case .rebloggedBy(_, let id):
             return "/\(id)/reblogged_by"
-        case .favouritedBy(let id):
+        case .favouritedBy(_, let id):
             return "/\(id)/favourited_by"
-        case .new(_, _, _, _, _, _):
+        case .new(_, _, _, _, _, _, _):
             return "/"
-        case .delete(let id):
+        case .delete(_, let id):
             return "/\(id)"
-        case .reblog(let id):
+        case .reblog(_, let id):
             return "/\(id)/reblog"
-        case .unreblog(let id):
+        case .unreblog(_, let id):
             return "/\(id)/unreblog"
-        case .favourite(let id):
+        case .favourite(_, let id):
             return "/\(id)/favourite"
-        case .unfavourite(let id):
+        case .unfavourite(_, let id):
             return "/\(id)/unfavourite"
         }
     }
@@ -60,9 +66,10 @@ extension Mastodon.Statuses: TargetType {
     /// The HTTP method used in the request.
     public var method: Moya.Method {
         switch self {
-        case .new(_, _, _, _, _, _), .reblog(_), .unreblog(_), .favourite(_), .unfavourite(_):
+        case .new(_, _, _, _, _, _, _), .reblog(_, _), .unreblog(_, _), .favourite(_, _),
+             .unfavourite(_, _):
             return .post
-        case .delete(_):
+        case .delete(_, _):
             return .delete
         default:
             return .get
@@ -72,7 +79,7 @@ extension Mastodon.Statuses: TargetType {
     /// The parameters to be incoded in the request.
     public var parameters: [String: Any]? {
         switch self {
-        case .new(let status, let inReplyToId, let mediaIds, let sensitive, let spoiler, let visibility):
+        case .new(_, let status, let inReplyToId, let mediaIds, let sensitive, let spoiler, let visibility):
             return [
                 "status": status,
                 "in_reply_to_id": inReplyToId ?? "", // todo: <--

@@ -3,20 +3,23 @@ import Moya
 
 extension Mastodon {
     public enum Follows {
-        case follow(String)
+        case follow(URL, String)
     }
 }
 
 extension Mastodon.Follows: TargetType {
     /// The target's base `URL`.
     public var baseURL: URL {
-        return Settings.shared.baseURL!.appendingPathComponent("/api/v1/follows")
+        switch self {
+        case .follow(let url, _):
+            return url.appendingPathComponent("/api/v1/follow_requests")
+        }
     }
     
     /// The path to be appended to `baseURL` to form the full `URL`.
     public var path: String {
         switch self {
-        case .follow(_):
+        case .follow(_, _):
             return "/"
         }
     }
@@ -24,7 +27,7 @@ extension Mastodon.Follows: TargetType {
     /// The HTTP method used in the request.
     public var method: Moya.Method {
         switch self {
-        case .follow(_):
+        case .follow(_, _):
             return .get
         }
     }
@@ -32,7 +35,7 @@ extension Mastodon.Follows: TargetType {
     /// The parameters to be incoded in the request.
     public var parameters: [String: Any]? {
         switch self {
-        case .follow(let uri):
+        case .follow(_, let uri):
             return [
                 "uri": uri
             ]

@@ -3,54 +3,61 @@ import Moya
 
 extension Mastodon {
     public enum Account {
-        case account(AccountId)
-        case verifyCredentials
-        case followers(AccountId)
-        case following(AccountId)
-        case statuses(AccountId, Bool, Bool)
-        case follow(AccountId)
-        case unfollow(AccountId)
-        case block(AccountId)
-        case unblock(AccountId)
-        case mute(AccountId)
-        case unmute(AccountId)
-        case relationships(AccountId)
-        case search(SearchQuery, Int)
+        case account(URL, AccountId)
+        case verifyCredentials(URL)
+        case followers(URL, AccountId)
+        case following(URL, AccountId)
+        case statuses(URL, AccountId, Bool, Bool)
+        case follow(URL, AccountId)
+        case unfollow(URL, AccountId)
+        case block(URL, AccountId)
+        case unblock(URL, AccountId)
+        case mute(URL, AccountId)
+        case unmute(URL, AccountId)
+        case relationships(URL, AccountId)
+        case search(URL, SearchQuery, Int)
     }
 }
 
 extension Mastodon.Account: TargetType {
     public var baseURL: URL {
-        return Settings.shared.baseURL!.appendingPathComponent("/api/v1/accounts")
+        switch self {
+        case .account(let url, _), .verifyCredentials(let url), .followers(let url, _),
+             .following(let url, _), .statuses(let url, _, _, _),
+             .follow(let url, _), .unfollow(let url, _), .block(let url, _),
+             .unblock(let url, _), .mute(let url, _), .unmute(let url, _),
+             .relationships(let url, _), .search(let url, _, _):
+            return url.appendingPathComponent("/api/v1/accounts")
+        }
     }
     
     public var path: String {
         switch self {
-        case .account(let id):
+        case .account(_, let id):
             return "/\(id)"
         case .verifyCredentials:
             return "/verify_credentials"
-        case .followers(let id):
+        case .followers(_, let id):
             return "/\(id)/followers"
-        case .following(let id):
+        case .following(_, let id):
             return "/\(id)/following"
-        case .statuses(let id, _, _):
+        case .statuses(_, let id, _, _):
             return "/\(id)/statuses"
-        case .follow(let id):
+        case .follow(_, let id):
             return "/\(id)/follow"
-        case .unfollow(let id):
+        case .unfollow(_, let id):
             return "/\(id)/unfollow"
-        case .block(let id):
+        case .block(_, let id):
             return "/\(id)/block"
-        case .unblock(let id):
+        case .unblock(_, let id):
             return "/\(id)/unblock"
-        case .mute(let id):
+        case .mute(_, let id):
             return "/\(id)/mute"
-        case .unmute(let id):
+        case .unmute(_, let id):
             return "/\(id)/unmute"
-        case .relationships(_):
+        case .relationships(_, _):
             return "/relationships"
-        case .search(_, _):
+        case .search(_, _, _):
             return "/search"
         }
     }
@@ -64,16 +71,16 @@ extension Mastodon.Account: TargetType {
     
     public var parameters: [String: Any]? {
         switch self {
-        case .statuses(_, let onlyMedia, let excludeReplies):
+        case .statuses(_, _, let onlyMedia, let excludeReplies):
             return [
                 "only_media": onlyMedia,
                 "exclude_replies": excludeReplies
             ]
-        case .relationships(let id):
+        case .relationships(_, let id):
             return [
                 "id": id // todo: can be array
             ]
-        case .search(let query, let limit):
+        case .search(_, let query, let limit):
             return [
                 "q": query,
                 "limit": limit
