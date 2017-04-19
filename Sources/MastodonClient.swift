@@ -15,19 +15,19 @@ public class MastodonClient {
     
     public var plugins = [PluginType]()
 
-    public func createApp(_ name: String, redirectUri: String = "urn:ietf:wg:oauth:2.0:oob", scopes: Scopes, url: URL) -> Observable<App> {
+    public func createApp(_ serverUrl: URL, _ name: String, redirectUri: String = "urn:ietf:wg:oauth:2.0:oob", scopes: Scopes, url: URL) -> Observable<App> {
         return RxMoyaProvider<Mastodon.Apps>(plugins: plugins)
             .request(.register(
-                name, redirectUri,
+                serverUrl, name, redirectUri,
                 scopes.reduce("") { $0 == "" ? $1 : $0 + " " + $1},
                 url.absoluteString
             ))
             .mapObject(type: App.self)
     }
     
-    public func getToken(_ app: App, username: String, _ password: String) -> Observable<AccessToken> {
+    public func getToken(_ serverUrl: URL, _ app: App, username: String, _ password: String) -> Observable<AccessToken> {
         return RxMoyaProvider<Mastodon.OAuth>(plugins: plugins)
-            .request(.authenticate(app, username, password))
+            .request(.authenticate(serverUrl, app, username, password))
             .mapObject(type: AccessToken.self)
     }
 

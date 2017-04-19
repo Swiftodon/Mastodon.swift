@@ -41,7 +41,6 @@
 		075823081EA2EEB400C6625C /* String+AsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1881E9CBF0400E5AEBC /* String+AsURL.swift */; };
 		075823091EA2EEB400C6625C /* URL+OptionalString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1891E9CBF0400E5AEBC /* URL+OptionalString.swift */; };
 		0758230A1EA2EEB400C6625C /* MastodonClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B18A1E9CBF0400E5AEBC /* MastodonClient.swift */; };
-		0758230B1EA2EEB400C6625C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B18B1E9CBF0400E5AEBC /* Settings.swift */; };
 		0758230C1EA2EEB400C6625C /* Accounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B18D1E9CBF0400E5AEBC /* Accounts.swift */; };
 		0758230D1EA2EEB400C6625C /* Apps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B18E1E9CBF0400E5AEBC /* Apps.swift */; };
 		0758230E1EA2EEB400C6625C /* Blocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B18F1E9CBF0400E5AEBC /* Blocks.swift */; };
@@ -77,7 +76,6 @@
 		E90E61C01EA16BC900E2DC19 /* String+AsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1881E9CBF0400E5AEBC /* String+AsURL.swift */; };
 		E90E61C11EA16BC900E2DC19 /* URL+OptionalString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1891E9CBF0400E5AEBC /* URL+OptionalString.swift */; };
 		E90E61C21EA16BC900E2DC19 /* MastodonClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B18A1E9CBF0400E5AEBC /* MastodonClient.swift */; };
-		E90E61C31EA16BC900E2DC19 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B18B1E9CBF0400E5AEBC /* Settings.swift */; };
 		E90E61C41EA16BC900E2DC19 /* Accounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B18D1E9CBF0400E5AEBC /* Accounts.swift */; };
 		E90E61C51EA16BC900E2DC19 /* Apps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B18E1E9CBF0400E5AEBC /* Apps.swift */; };
 		E90E61C61EA16BC900E2DC19 /* Blocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B18F1E9CBF0400E5AEBC /* Blocks.swift */; };
@@ -135,7 +133,6 @@
 		0712B1881E9CBF0400E5AEBC /* String+AsURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+AsURL.swift"; sourceTree = "<group>"; };
 		0712B1891E9CBF0400E5AEBC /* URL+OptionalString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+OptionalString.swift"; sourceTree = "<group>"; };
 		0712B18A1E9CBF0400E5AEBC /* MastodonClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MastodonClient.swift; sourceTree = "<group>"; };
-		0712B18B1E9CBF0400E5AEBC /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0712B18D1E9CBF0400E5AEBC /* Accounts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Accounts.swift; sourceTree = "<group>"; };
 		0712B18E1E9CBF0400E5AEBC /* Apps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Apps.swift; sourceTree = "<group>"; };
 		0712B18F1E9CBF0400E5AEBC /* Blocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blocks.swift; sourceTree = "<group>"; };
@@ -405,7 +402,6 @@
 				0712B1761E9CBF0400E5AEBC /* Entities */,
 				0712B1871E9CBF0400E5AEBC /* Extensions */,
 				0712B18A1E9CBF0400E5AEBC /* MastodonClient.swift */,
-				0712B18B1E9CBF0400E5AEBC /* Settings.swift */,
 				0712B18C1E9CBF0400E5AEBC /* Targets */,
 			);
 			path = Sources;
@@ -577,7 +573,6 @@
 				075822F81EA2EEB400C6625C /* AccessToken.swift in Sources */,
 				0758230C1EA2EEB400C6625C /* Accounts.swift in Sources */,
 				075823191EA2EEB400C6625C /* Search.swift in Sources */,
-				0758230B1EA2EEB400C6625C /* Settings.swift in Sources */,
 				075823151EA2EEB400C6625C /* Mutes.swift in Sources */,
 				0758230E1EA2EEB400C6625C /* Blocks.swift in Sources */,
 				075823061EA2EEB400C6625C /* Status.swift in Sources */,
@@ -615,7 +610,6 @@
 				E90E61C01EA16BC900E2DC19 /* String+AsURL.swift in Sources */,
 				E90E61C11EA16BC900E2DC19 /* URL+OptionalString.swift in Sources */,
 				E90E61C21EA16BC900E2DC19 /* MastodonClient.swift in Sources */,
-				E90E61C31EA16BC900E2DC19 /* Settings.swift in Sources */,
 				E90E61C41EA16BC900E2DC19 /* Accounts.swift in Sources */,
 				E90E61C51EA16BC900E2DC19 /* Apps.swift in Sources */,
 				E90E61C61EA16BC900E2DC19 /* Blocks.swift in Sources */,

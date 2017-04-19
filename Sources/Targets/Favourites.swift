@@ -3,14 +3,17 @@ import Moya
 
 extension Mastodon {
     public enum Favourites {
-        case favourites
+        case favourites(URL)
     }
 }
 
 extension Mastodon.Favourites: TargetType {
     /// The target's base `URL`.
     public var baseURL: URL {
-        return Settings.shared.baseURL!.appendingPathComponent("/api/v1/favourites")
+        switch self {
+        case .favourites(let url):
+            return url.appendingPathComponent("/api/v1/favourites")
+        }
     }
     
     /// The path to be appended to `baseURL` to form the full `URL`.

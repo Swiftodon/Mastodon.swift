@@ -3,14 +3,17 @@ import Moya
 
 extension Mastodon {
     public enum Mutes {
-        case mutes
+        case mutes(URL)
     }
 }
 
 extension Mastodon.Mutes: TargetType {
     /// The target's base `URL`.
     public var baseURL: URL {
-        return Settings.shared.baseURL!.appendingPathComponent("/api/v1/mutes")
+        switch self {
+        case .mutes(let url):
+            return url.appendingPathComponent("/api/v1/mutes")
+        }
     }
     
     /// The path to be appended to `baseURL` to form the full `URL`.

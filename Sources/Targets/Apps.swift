@@ -3,20 +3,23 @@ import Moya
 
 extension Mastodon {
     public enum Apps {
-        case register(String, String, String, String)
+        case register(URL, String, String, String, String)
     }
 }
 
 extension Mastodon.Apps: TargetType {
     /// The target's base `URL`.
     public var baseURL: URL {
-        return Settings.shared.baseURL!.appendingPathComponent("/api/v1/apps")
+        switch self {
+        case .register(let url, _, _, _, _):
+            return url.appendingPathComponent("/api/v1/apps")
+        }
     }
     
     /// The path to be appended to `baseURL` to form the full `URL`.
     public var path: String {
         switch self {
-        case .register(_, _, _, _):
+        case .register(_, _, _, _, _):
             return "/"
         }
     }
@@ -24,7 +27,7 @@ extension Mastodon.Apps: TargetType {
     /// The HTTP method used in the request.
     public var method: Moya.Method {
         switch self {
-        case .register(_, _, _, _):
+        case .register(_, _, _, _, _):
             return .post
         }
     }
@@ -32,7 +35,7 @@ extension Mastodon.Apps: TargetType {
     /// The parameters to be incoded in the request.
     public var parameters: [String: Any]? {
         switch self {
-        case .register(let clientName, let redirectUris, let scopes, let website):
+        case .register(_, let clientName, let redirectUris, let scopes, let website):
             return [
                 "client_name": clientName,
                 "redirect_uris": redirectUris,
@@ -45,7 +48,7 @@ extension Mastodon.Apps: TargetType {
     /// The method used for parameter encoding.
     public var parameterEncoding: ParameterEncoding {
         switch self {
-        case .register(_, _, _, _):
+        case .register(_, _, _, _, _):
             return URLEncoding.default
         }
     }
@@ -58,7 +61,7 @@ extension Mastodon.Apps: TargetType {
     /// The type of HTTP task to be performed.
     public var task: Task {
         switch self {
-        case .register(_, _, _, _):
+        case .register(_, _, _, _, _):
             return .request
         }
     }

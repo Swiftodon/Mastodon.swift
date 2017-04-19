@@ -3,16 +3,19 @@ import Moya
 
 extension Mastodon {
     public enum Notifications {
-        case notifications
-        case notification(String)
-        case clear
+        case notifications(URL)
+        case notification(URL, String)
+        case clear(URL)
     }
 }
 
 extension Mastodon.Notifications: TargetType {
     /// The target's base `URL`.
     public var baseURL: URL {
-        return Settings.shared.baseURL!.appendingPathComponent("/api/v1/notifications")
+        switch self {
+        case .notifications(let url), .notification(let url, _), .clear(let url):
+            return url.appendingPathComponent("/api/v1/notifications")
+        }
     }
     
     /// The path to be appended to `baseURL` to form the full `URL`.
@@ -30,7 +33,7 @@ extension Mastodon.Notifications: TargetType {
     /// The HTTP method used in the request.
     public var method: Moya.Method {
         switch self {
-        case .notifications, .notification(_):
+        case .notifications, .notification(_, _):
             return .get
         case .clear:
             return .post

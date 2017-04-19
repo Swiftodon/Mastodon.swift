@@ -3,14 +3,17 @@ import Moya
 
 extension Mastodon {
     public enum Instances {
-        case instance
+        case instance(URL)
     }
 }
 
 extension Mastodon.Instances: TargetType {
     /// The target's base `URL`.
     public var baseURL: URL {
-        return Settings.shared.baseURL!.appendingPathComponent("/api/v1/instance")
+        switch self {
+        case .instance(let url):
+            return url.appendingPathComponent("/api/v1/instance")
+        }
     }
     
     /// The path to be appended to `baseURL` to form the full `URL`.
