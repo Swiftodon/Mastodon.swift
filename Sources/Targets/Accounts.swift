@@ -20,38 +20,40 @@ extension Mastodon {
 }
 
 extension Mastodon.Account: TargetType {
+    fileprivate var apiPath: String { return "/api/v1/accounts" }
+    
     public var baseURL: URL {
-        return Settings.shared.baseURL!.appendingPathComponent("/api/v1/accounts")
+        return Settings.shared.baseURL!
     }
     
     public var path: String {
         switch self {
         case .account(let id):
-            return "/\(id)"
+            return "\(apiPath)/\(id)"
         case .verifyCredentials:
-            return "/verify_credentials"
+            return "\(apiPath)/verify_credentials"
         case .followers(let id):
-            return "/\(id)/followers"
+            return "\(apiPath)/\(id)/followers"
         case .following(let id):
-            return "/\(id)/following"
+            return "\(apiPath)/\(id)/following"
         case .statuses(let id, _, _):
-            return "/\(id)/statuses"
+            return "\(apiPath)/\(id)/statuses"
         case .follow(let id):
-            return "/\(id)/follow"
+            return "\(apiPath)/\(id)/follow"
         case .unfollow(let id):
-            return "/\(id)/unfollow"
+            return "\(apiPath)/\(id)/unfollow"
         case .block(let id):
-            return "/\(id)/block"
+            return "\(apiPath)/\(id)/block"
         case .unblock(let id):
-            return "/\(id)/unblock"
+            return "\(apiPath)/\(id)/unblock"
         case .mute(let id):
-            return "/\(id)/mute"
+            return "\(apiPath)/\(id)/mute"
         case .unmute(let id):
-            return "/\(id)/unmute"
+            return "\(apiPath)/\(id)/unmute"
         case .relationships(_):
-            return "/relationships"
+            return "\(apiPath)/relationships"
         case .search(_, _):
-            return "/search"
+            return "\(apiPath)/search"
         }
     }
     

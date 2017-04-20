@@ -13,20 +13,22 @@ extension Mastodon {
 }
 
 extension Mastodon.Timelines: TargetType {
+    fileprivate var apiPath: String { return "/api/v1/timelines" }
+    
     /// The target's base `URL`.
     public var baseURL: URL {
-        return Settings.shared.baseURL!.appendingPathComponent("/api/v1/timelines")
+        return Settings.shared.baseURL!
     }
     
     /// The path to be appended to `baseURL` to form the full `URL`.
     public var path: String {
         switch self {
         case .home:
-            return "/home"
+            return "\(apiPath)/home"
         case .pub(_):
-            return "/public"
+            return "\(apiPath)/public"
         case .tag(let hashtag, _, _, _):
-            return "/tag/\(hashtag)"
+            return "\(apiPath)/tag/\(hashtag)"
         }
     }
     

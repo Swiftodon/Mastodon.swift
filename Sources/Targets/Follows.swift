@@ -8,16 +8,18 @@ extension Mastodon {
 }
 
 extension Mastodon.Follows: TargetType {
+    fileprivate var apiPath: String { return "/api/v1/follows" }
+    
     /// The target's base `URL`.
     public var baseURL: URL {
-        return Settings.shared.baseURL!.appendingPathComponent("/api/v1/follows")
+        return Settings.shared.baseURL!
     }
     
     /// The path to be appended to `baseURL` to form the full `URL`.
     public var path: String {
         switch self {
         case .follow(_):
-            return "/"
+            return "\(apiPath)"
         }
     }
     

@@ -9,16 +9,18 @@ extension Mastodon {
 }
 
 extension Mastodon.Reports: TargetType {
+    fileprivate var apiPath: String { return "/api/v1/reports" }
+    
     /// The target's base `URL`.
     public var baseURL: URL {
-        return Settings.shared.baseURL!.appendingPathComponent("/api/v1/reports")
+        return Settings.shared.baseURL!
     }
     
     /// The path to be appended to `baseURL` to form the full `URL`.
     public var path: String {
         switch self {
         case .list, .report(_, _, _):
-            return "/"
+            return "\(apiPath)"
         }
     }
     

@@ -40,6 +40,25 @@ RxMoyaProvider<Mastodon.Timelines>(plugins: [AccessTokenPlugin(token: accessToke
 .subscribe { even in … }
 ```
 
+### Multitenancy
+
+In order to support multitenancy, it is possible to use the endpoint operator to inject the base URL
+of a server. 
+
+Example:
+
+```swift
+let app = App(clientId: "…", clientSecret: "…")
+let url = "https://mastodon.cloud"
+
+RxMoyaProvider<Mastodon.OAuth>(endpointClosure: /url)
+.request(.authenticate(app, username, password))
+.mapObject(type: AccessToken.self)
+.subscribe { even in … }
+```
+
+Please note that the endpoint provided by teh operator overrides the URL stored in the settings singleton.
+
 ## Requirements
 
 * `Xcode 8.3 / Swift 3.1`

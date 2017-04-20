@@ -24,36 +24,38 @@ extension Mastodon {
 }
 
 extension Mastodon.Statuses: TargetType {
+    fileprivate var apiPath: String { return "/api/v1/statuses" }
+    
     /// The target's base `URL`.
     public var baseURL: URL {
-        return Settings.shared.baseURL!.appendingPathComponent("/api/v1/statuses")
+        return Settings.shared.baseURL!
     }
     
     /// The path to be appended to `baseURL` to form the full `URL`.
     public var path: String {
         switch self {
         case .status(let id):
-            return "/\(id)"
+            return "\(apiPath)/\(id)"
         case .context(let id):
-            return "/\(id)/context"
+            return "\(apiPath)/\(id)/context"
         case .card(let id):
-            return "/\(id)/card"
+            return "\(apiPath)/\(id)/card"
         case .rebloggedBy(let id):
-            return "/\(id)/reblogged_by"
+            return "\(apiPath)/\(id)/reblogged_by"
         case .favouritedBy(let id):
-            return "/\(id)/favourited_by"
+            return "\(apiPath)/\(id)/favourited_by"
         case .new(_, _, _, _, _, _):
-            return "/"
+            return "\(apiPath)"
         case .delete(let id):
-            return "/\(id)"
+            return "\(apiPath)/\(id)"
         case .reblog(let id):
-            return "/\(id)/reblog"
+            return "\(apiPath)/\(id)/reblog"
         case .unreblog(let id):
-            return "/\(id)/unreblog"
+            return "\(apiPath)/\(id)/unreblog"
         case .favourite(let id):
-            return "/\(id)/favourite"
+            return "\(apiPath)/\(id)/favourite"
         case .unfavourite(let id):
-            return "/\(id)/unfavourite"
+            return "\(apiPath)/\(id)/unfavourite"
         }
     }
     
