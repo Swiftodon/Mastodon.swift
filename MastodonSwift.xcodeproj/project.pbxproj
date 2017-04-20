@@ -58,6 +58,8 @@
 		075823191EA2EEB400C6625C /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B19A1E9CBF0400E5AEBC /* Search.swift */; };
 		0758231A1EA2EEB400C6625C /* Statuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B19B1E9CBF0400E5AEBC /* Statuses.swift */; };
 		0758231B1EA2EEB400C6625C /* Timelines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B19C1E9CBF0400E5AEBC /* Timelines.swift */; };
+		B350360F1EA8C76400E59E15 /* EndpointOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B350360E1EA8C76400E59E15 /* EndpointOperator.swift */; };
+		B35036101EA8C76400E59E15 /* EndpointOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B350360E1EA8C76400E59E15 /* EndpointOperator.swift */; };
 		E90E61B01EA16BC900E2DC19 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1771E9CBF0400E5AEBC /* AccessToken.swift */; };
 		E90E61B11EA16BC900E2DC19 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1781E9CBF0400E5AEBC /* Account.swift */; };
 		E90E61B21EA16BC900E2DC19 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712B1791E9CBF0400E5AEBC /* App.swift */; };
@@ -177,6 +179,7 @@
 		077037B71EA0B28C00AF238B /* RxMoya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxMoya.framework; path = Carthage/Build/iOS/RxMoya.framework; sourceTree = "<group>"; };
 		077037B81EA0B28C00AF238B /* RxMoyaGloss.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxMoyaGloss.framework; path = Carthage/Build/iOS/RxMoyaGloss.framework; sourceTree = "<group>"; };
 		077037B91EA0B28C00AF238B /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		B350360E1EA8C76400E59E15 /* EndpointOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndpointOperator.swift; sourceTree = "<group>"; };
 		E90E61471EA150A800E2DC19 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/Mac/RxTest.framework; sourceTree = "<group>"; };
 		E90E619D1EA168AE00E2DC19 /* MoyaGloss.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MoyaGloss.framework; path = Carthage/Build/Mac/MoyaGloss.framework; sourceTree = "<group>"; };
 		E90E619E1EA168AE00E2DC19 /* ReactiveMoyaGloss.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveMoyaGloss.framework; path = Carthage/Build/Mac/ReactiveMoyaGloss.framework; sourceTree = "<group>"; };
@@ -406,6 +409,7 @@
 				0712B1871E9CBF0400E5AEBC /* Extensions */,
 				0712B18A1E9CBF0400E5AEBC /* MastodonClient.swift */,
 				0712B18B1E9CBF0400E5AEBC /* Settings.swift */,
+				B350360E1EA8C76400E59E15 /* EndpointOperator.swift */,
 				0712B18C1E9CBF0400E5AEBC /* Targets */,
 			);
 			path = Sources;
@@ -581,6 +585,7 @@
 				075823151EA2EEB400C6625C /* Mutes.swift in Sources */,
 				0758230E1EA2EEB400C6625C /* Blocks.swift in Sources */,
 				075823061EA2EEB400C6625C /* Status.swift in Sources */,
+				B350360F1EA8C76400E59E15 /* EndpointOperator.swift in Sources */,
 				0758230F1EA2EEB400C6625C /* Favourites.swift in Sources */,
 				075823081EA2EEB400C6625C /* String+AsURL.swift in Sources */,
 				075823021EA2EEB400C6625C /* Notification.swift in Sources */,
@@ -624,6 +629,7 @@
 				E90E61C91EA16BC900E2DC19 /* Follows.swift in Sources */,
 				E90E61CA1EA16BC900E2DC19 /* Instances.swift in Sources */,
 				E90E61CB1EA16BC900E2DC19 /* Mastodon.swift in Sources */,
+				B35036101EA8C76400E59E15 /* EndpointOperator.swift in Sources */,
 				E90E61CC1EA16BC900E2DC19 /* Media.swift in Sources */,
 				E90E61CD1EA16BC900E2DC19 /* Mutes.swift in Sources */,
 				E90E61CE1EA16BC900E2DC19 /* Notifications.swift in Sources */,
