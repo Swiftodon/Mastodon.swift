@@ -19,7 +19,7 @@ extension Mastodon {
     }
 }
 
-extension Mastodon.Account: TargetType {
+extension Mastodon.Account: TargetType, AccessTokenAuthorizable {
     fileprivate var apiPath: String { return "/api/v1/accounts" }
     
     public var baseURL: URL {
@@ -104,5 +104,9 @@ extension Mastodon.Account: TargetType {
         default:
             return .request
         }
+    }
+    
+    public var shouldAuthorize: Bool {
+        return true
     }
 }
