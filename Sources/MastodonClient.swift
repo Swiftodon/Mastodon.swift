@@ -11,20 +11,29 @@ public typealias Scopes = [Scope]
 
 public class MastodonClient {
     
-    public init() {
+    public init(plugins: [PluginType]? = nil) {
+        
+        guard let _ = plugins else {
+            return
+        }
+        
+        self.plugins.append(contentsOf: plugins!)
     }
     
     public var plugins = [PluginType]()
-
+    
     public func createApp(_ name: String,
                           redirectUri: String = "urn:ietf:wg:oauth:2.0:oob",
-                          scopes: Scopes, url: URL) -> Observable<App> {
-        return RxMoyaProvider<Mastodon.Apps>(plugins: plugins)
+                          scopes: Scopes,
+                          url: URL,
+                          endpointClosure: @escaping MoyaProvider<Mastodon.Apps>.EndpointClosure = MoyaProvider.defaultEndpointMapping) -> Observable<App> {
+        return RxMoyaProvider<Mastodon.Apps>(endpointClosure: endpointClosure, plugins: plugins)
             .request(.register(
-                name, redirectUri,
+                name,
+                redirectUri,
                 scopes.reduce("") { $0 == "" ? $1 : $0 + " " + $1},
                 url.absoluteString
-            ))
+                ))
             .mapObject(type: App.self)
     }
     
