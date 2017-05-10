@@ -8,7 +8,7 @@ public typealias PasswordType = String
 
 extension Mastodon {
     public enum OAuth {
-        case authenticate(App, UsernameType, PasswordType)
+        case authenticate(App, UsernameType, PasswordType, String?)
     }
 }
 
@@ -23,7 +23,7 @@ extension Mastodon.OAuth: TargetType {
     /// The path to be appended to `baseURL` to form the full `URL`.
     public var path: String {
         switch self {
-        case.authenticate(_, _, _):
+        case.authenticate(_, _, _, _):
             return "\(apiPath)"
         }
     }
@@ -31,7 +31,7 @@ extension Mastodon.OAuth: TargetType {
     /// The HTTP method used in the request.
     public var method: Moya.Method {
         switch self {
-        case .authenticate(_, _, _):
+        case .authenticate(_, _, _, _):
             return .post
         }
     }
@@ -39,13 +39,14 @@ extension Mastodon.OAuth: TargetType {
     /// The parameters to be incoded in the request.
     public var parameters: [String: Any]? {
         switch self {
-        case .authenticate(let app, let username, let password):
+        case .authenticate(let app, let username, let password, let scope):
             return [
                 "client_id": app.clientId,
                 "client_secret": app.clientSecret,
                 "grant_type": "password",
                 "username": username,
-                "password": password
+                "password": password,
+                "scope": scope ?? ""
             ]
         }
     }

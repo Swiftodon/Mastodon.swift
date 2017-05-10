@@ -40,9 +40,10 @@ public class MastodonClient {
     public func getToken(_ app: App,
                          username: String,
                          password: String,
+                         scope: Scopes,
                          endpointClosure: @escaping MoyaProvider<Mastodon.OAuth>.EndpointClosure = MoyaProvider.defaultEndpointMapping) -> Observable<AccessToken> {
         return RxMoyaProvider<Mastodon.OAuth>(endpointClosure: endpointClosure, plugins: plugins)
-            .request(.authenticate(app, username, password))
+            .request(.authenticate(app, username, password, scope.reduce("") { $0 == "" ? $1 : $0 + " " + $1}))
             .mapObject(type: AccessToken.self)
     }
 
