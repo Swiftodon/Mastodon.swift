@@ -10,12 +10,6 @@ This client is designed to connect to any Mastodon instance and interact with it
 
 `MastodonClient` contains a few convenience methods to create Apps (OAuth Clients) and interact with the API but you should use the Moya Targets directly for the time being (as those are feature complete).
 
-**Do not forget** to setup you Mastodon base url by setting it in the `Settings` singleton before trying to use any of the APIs:
-
-```swift
-Settings.shared.baseURL = NSURL(string: "https://mastodon.social")!
-```
-
 Given you've got an OAuth Client
 
 ```swift
@@ -25,60 +19,39 @@ let app = App(clientId: "…", clientSecret: "…")
 Logging in is as easy as this then:
 
 ```swift
-RxMoyaProvider<Mastodon.OAuth>()
-.request(.authenticate(app, username, password))
-.mapObject(type: AccessToken.self)
-.subscribe { even in … }
+let client = MastodonClient(baseURL: URL(string: "https://host.tld")!)
+
+let app = App(
+    clientId: "a1a2a3a4a5",
+    clientSecret: "s3cr3t"
+)
+
+let response = try await client.getToken(
+    app,
+    username: "test+account@host.tld",
+    password: "pa4w0rd",
+    scope: ["read", "write", "follow"]
+)
 ```
 
 Provided login was successful and you've retrieved an `AccessToken` you're free to use all the other APIs, e.g. to retrieve your home timeline:
 
 ```swift
-RxMoyaProvider<Mastodon.Timelines>(plugins: [AccessTokenPlugin(token: accessToken.token)])
-.request(.home)
-.mapArray(type: Status.self)
-.subscribe { even in … }
-```
+let client = MastodonClient(baseURL: URL(string: "https://bearologics.social")!)
 
-### Multitenancy
-
-In order to support multitenancy, it is possible to use the endpoint operator to inject the base URL
-of a server. 
-
-Example:
-
-```swift
-let app = App(clientId: "…", clientSecret: "…")
-let url = "https://mastodon.cloud"
-
-RxMoyaProvider<Mastodon.OAuth>(endpointClosure: /url)
-.request(.authenticate(app, username, password))
-.mapObject(type: AccessToken.self)
-.subscribe { even in … }
+let result = try await client.getHomeTimeline(token)
 ```
 
 Please note that the endpoint provided by teh operator overrides the URL stored in the settings singleton.
 
 ## Requirements
 
-* `Xcode 8.3 / Swift 3.1`
-* `Alamofire`
-* `Moya`
-* `Gloss`
-* `RxSwift`
-
-## Installation
-
-### Using Carthage
-
-```
-github "Swiftodon/Mastodon.swift"
-```
+- `Xcode 14 / Swift 5`
 
 ## Authors
 
-* Marcus Kida <kidmar@mastodon.kida.io>
-* Thomas Bonk <thomas@meandmymac.de>
+- Marcus Kida <kidmar@mastodon.kida.io>
+- Thomas Bonk <thomas@meandmymac.de>
 
 ## License
 
