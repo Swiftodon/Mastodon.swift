@@ -2,7 +2,9 @@ name: Run tests
 
 on:
   workflow_dispatch:
+  pull_request:
   push:
+    - main
 
 jobs:
   run_tests:
