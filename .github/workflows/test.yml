@@ -1,0 +1,13 @@
+name: Run tests
+
+on:
+  push:
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v1
+      - name: Run tests
+        run: swift test
