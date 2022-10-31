@@ -1,8 +1,0 @@
-github "Alamofire/Alamofire" "4.4.0"
-github "Moya/Moya" "8.0.3"
-github "ReactiveCocoa/ReactiveCocoa" "5.0.3"
-github "ReactiveCocoa/ReactiveSwift" "1.1.1"
-github "ReactiveX/RxSwift" "3.4.0"
-github "antitypical/Result" "3.2.1"
-github "hkellaway/Gloss" "1.2.4"
-github "kimar/Moya-Gloss" "844ccf0075cf8f10350818c1a2e129744f8a8d42"

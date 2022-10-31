@@ -1,3 +1,0 @@
-github "ReactiveCocoa/ReactiveCocoa" ~> 5.0.3
-github "Moya/Moya" ~> 8.0.3
-github "kimar/Moya-Gloss" "master"
