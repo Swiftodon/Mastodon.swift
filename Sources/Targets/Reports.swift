@@ -1,5 +1,4 @@
 import Foundation
-import Moya
 
 extension Mastodon {
     public enum Reports {
@@ -9,6 +8,25 @@ extension Mastodon {
 }
 
 extension Mastodon.Reports: TargetType {
+    private struct Request: Encodable {
+        let accountId: String
+        let statusIds: [String]
+        let comment: String
+        
+        private enum CodingKeys: String, CodingKey {
+            case accountId = "account_id"
+            case statusIds = "status_ids"
+            case comment
+        }
+        
+        func encode(to encoder: Encoder) throws {
+            var container: KeyedEncodingContainer<Mastodon.Reports.Request.CodingKeys> = encoder.container(keyedBy: Mastodon.Reports.Request.CodingKeys.self)
+            try container.encode(self.accountId, forKey: Mastodon.Reports.Request.CodingKeys.accountId)
+            try container.encode(self.statusIds, forKey: Mastodon.Reports.Request.CodingKeys.statusIds)
+            try container.encode(self.comment, forKey: Mastodon.Reports.Request.CodingKeys.comment)
+        }
+    }
+    
     fileprivate var apiPath: String { return "/api/v1/reports" }
     
     /// The target's base `URL`.
@@ -25,7 +43,7 @@ extension Mastodon.Reports: TargetType {
     }
     
     /// The HTTP method used in the request.
-    public var method: Moya.Method {
+    public var method: Method {
         switch self {
         case .list:
             return .get
@@ -35,37 +53,22 @@ extension Mastodon.Reports: TargetType {
     }
     
     /// The parameters to be incoded in the request.
-    public var parameters: [String: Any]? {
+    public var queryItems: [String: String]? {
+        nil
+    }
+    
+    public var headers: [String: String]? {
+        [:].contentTypeApplicationJson
+    }
+    
+    public var httpBody: Data? {
         switch self {
         case .list:
             return nil
         case .report(let accountId, let statusIds, let comment):
-            return [
-                "account_id": accountId,
-                "status_ids": statusIds,
-                "comment": comment
-            ]
-        }
-    }
-    
-    /// The method used for parameter encoding.
-    public var parameterEncoding: ParameterEncoding {
-        switch self {
-        default:
-            return URLEncoding.default
-        }
-    }
-    
-    /// Provides stub data for use in testing.
-    public var sampleData: Data {
-        return "{}".data(using: .utf8)!
-    }
-    
-    /// The type of HTTP task to be performed.
-    public var task: Task {
-        switch self {
-        default:
-            return .request
+            return try? JSONEncoder().encode(
+                Request(accountId: accountId, statusIds: statusIds, comment: comment)
+            )
         }
     }
 }

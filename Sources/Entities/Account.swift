@@ -1,5 +1,4 @@
 import Foundation
-import Gloss
 
 public struct Account: Decodable {
     public let id: Int
@@ -16,32 +15,19 @@ public struct Account: Decodable {
     public let followingCount: Int
     public let statusesCount: Int
     
-    public init?(json: JSON) {
-        guard
-            let id: Int = "id" <~~ json,
-            let username: String = "username" <~~ json,
-            let acct: String = "acct" <~~ json,
-            let locked: Bool = "locked" <~~ json,
-            let createdAt: String = "created_at" <~~ json,
-            let followersCount: Int = "followers_count" <~~ json,
-            let followingCount: Int = "following_count" <~~ json,
-            let statusesCount: Int = "statuses_count" <~~ json
-        else {
-            return nil
-        }
-        
-        self.id = id
-        self.username = username
-        self.acct = acct
-        self.displayName = "display_name" <~~ json
-        self.note = "note" <~~ json
-        self.url = .fromOptional(string: "url" <~~ json)
-        self.avatar = .fromOptional(string: "avatar" <~~ json)
-        self.header = .fromOptional(string: "header" <~~ json)
-        self.locked = locked
-        self.createdAt = createdAt
-        self.followersCount = followersCount
-        self.followingCount = followingCount
-        self.statusesCount = statusesCount
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case username
+        case acct
+        case locked
+        case createdAt = "created_at"
+        case followersCount = "followers_count"
+        case followingCount = "following_count"
+        case statusesCount = "statuses_count"
+        case displayName
+        case note
+        case url
+        case avatar
+        case header
     }
 }

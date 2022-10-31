@@ -1,5 +1,4 @@
 import Foundation
-import Moya
 
 extension Mastodon {
     public enum Apps {
@@ -8,6 +7,28 @@ extension Mastodon {
 }
 
 extension Mastodon.Apps: TargetType {
+    struct Request: Encodable {
+        let clientName: String
+        let redirectUris: String
+        let scopes: String
+        let website: String
+        
+        enum CodingKeys: String, CodingKey {
+            case clientName = "client_name"
+            case redirectUris = "redirect_uris"
+            case scopes
+            case website
+        }
+        
+        func encode(to encoder: Encoder) throws {
+            var container: KeyedEncodingContainer<Mastodon.Apps.Request.CodingKeys> = encoder.container(keyedBy: Mastodon.Apps.Request.CodingKeys.self)
+            try container.encode(self.clientName, forKey: Mastodon.Apps.Request.CodingKeys.clientName)
+            try container.encode(self.redirectUris, forKey: Mastodon.Apps.Request.CodingKeys.redirectUris)
+            try container.encode(self.scopes, forKey: Mastodon.Apps.Request.CodingKeys.scopes)
+            try container.encode(self.website, forKey: Mastodon.Apps.Request.CodingKeys.website)
+        }
+    }
+    
     fileprivate var apiPath: String { return "/api/v1/apps" }
     
     /// The target's base `URL`.
@@ -24,7 +45,7 @@ extension Mastodon.Apps: TargetType {
     }
     
     /// The HTTP method used in the request.
-    public var method: Moya.Method {
+    public var method: Method {
         switch self {
         case .register(_, _, _, _):
             return .post
@@ -32,36 +53,20 @@ extension Mastodon.Apps: TargetType {
     }
     
     /// The parameters to be incoded in the request.
-    public var parameters: [String: Any]? {
+    public var queryItems: [String: String]? {
+        nil
+    }
+    
+    public var headers: [String: String]? {
+        [:].contentTypeApplicationJson
+    }
+    
+    public var httpBody: Data? {
         switch self {
         case .register(let clientName, let redirectUris, let scopes, let website):
-            return [
-                "client_name": clientName,
-                "redirect_uris": redirectUris,
-                "scopes": scopes,
-                "website": website
-            ]
-        }
-    }
-    
-    /// The method used for parameter encoding.
-    public var parameterEncoding: ParameterEncoding {
-        switch self {
-        case .register(_, _, _, _):
-            return URLEncoding.default
-        }
-    }
-    
-    /// Provides stub data for use in testing.
-    public var sampleData: Data {
-        return "{}".data(using: .utf8)!
-    }
-    
-    /// The type of HTTP task to be performed.
-    public var task: Task {
-        switch self {
-        case .register(_, _, _, _):
-            return .request
+            return try? JSONEncoder().encode(
+                Request(clientName: clientName, redirectUris: redirectUris, scopes: scopes, website: website)
+            )
         }
     }
 }

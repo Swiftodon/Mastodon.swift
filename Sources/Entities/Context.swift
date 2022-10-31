@@ -1,16 +1,17 @@
-import Gloss
+import Foundation
 
 public struct Context: Decodable {
     public let ancestors: [Status]
     public let descendants: [Status]
+
+    public enum CodingKeys: CodingKey {
+        case ancestors
+        case descendants
+    }
     
-    public init?(json: JSON) {
-        guard
-            let ancestors: [Status] = "ancestors" <~~ json,
-            let descendants: [Status] = "descendants" <~~ json
-        else { return nil }
-        
-        self.ancestors = ancestors
-        self.descendants = descendants
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.ancestors = try container.decode([Status].self, forKey: .ancestors)
+        self.descendants = try container.decode([Status].self, forKey: .descendants)
     }
 }

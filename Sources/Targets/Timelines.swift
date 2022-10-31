@@ -1,5 +1,4 @@
 import Foundation
-import Moya
 
 public typealias SinceId = StatusId
 public typealias MaxId = StatusId
@@ -25,7 +24,7 @@ extension Mastodon.Timelines: TargetType {
         switch self {
         case .home:
             return "\(apiPath)/home"
-        case .pub(_):
+        case .pub:
             return "\(apiPath)/public"
         case .tag(let hashtag, _, _, _):
             return "\(apiPath)/tag/\(hashtag)"
@@ -33,7 +32,7 @@ extension Mastodon.Timelines: TargetType {
     }
     
     /// The HTTP method used in the request.
-    public var method: Moya.Method {
+    public var method: Method {
         switch self {
         default:
             return .get
@@ -41,8 +40,8 @@ extension Mastodon.Timelines: TargetType {
     }
     
     /// The parameters to be incoded in the request.
-    public var parameters: [String: Any]? {
-        var params: [String : Any] = [:]
+    public var queryItems: [String: String]? {
+        var params: [String : String] = [:]
         var local: Bool? = nil
         var maxId: MaxId? = nil
         var sinceId: SinceId? = nil
@@ -59,29 +58,22 @@ extension Mastodon.Timelines: TargetType {
         }
 
         if let maxId = maxId {
-            params["max_id"] = maxId
+            params["max_id"] = maxId.asString
         }
         if let sinceId = sinceId {
-            params["since_id"] = sinceId
+            params["since_id"] = sinceId.asString
         }
         if let local = local {
-            params["local"] = local
+            params["local"] = local.asString
         }
         return params
     }
     
-    /// The method used for parameter encoding.
-    public var parameterEncoding: ParameterEncoding {
-        return URLEncoding.default
+    public var headers: [String: String]? {
+        [:].contentTypeApplicationJson
     }
     
-    /// Provides stub data for use in testing.
-    public var sampleData: Data {
-        return "{}".data(using: .utf8)!
-    }
-    
-    /// The type of HTTP task to be performed.
-    public var task: Task {
-        return .request
+    public var httpBody: Data? {
+        nil
     }
 }

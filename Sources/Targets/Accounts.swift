@@ -1,5 +1,4 @@
 import Foundation
-import Moya
 
 extension Mastodon {
     public enum Account {
@@ -57,52 +56,39 @@ extension Mastodon.Account: TargetType {
         }
     }
     
-    public var method: Moya.Method {
+    public var method: Method {
         switch self {
         default:
             return .get
         }
     }
-    
-    public var parameters: [String: Any]? {
+        
+    public var queryItems: [String: String]? {
         switch self {
         case .statuses(_, let onlyMedia, let excludeReplies):
             return [
-                "only_media": onlyMedia,
-                "exclude_replies": excludeReplies
+                "only_media": onlyMedia.asString,
+                "exclude_replies": excludeReplies.asString
             ]
         case .relationships(let id):
             return [
-                "id": id // todo: can be array
+                "id": id.asString // todo: can be array
             ]
         case .search(let query, let limit):
             return [
                 "q": query,
-                "limit": limit
+                "limit": limit.asString
             ]
         default:
             return nil
         }
     }
     
-    public var parameterEncoding: ParameterEncoding {
-        switch self {
-        default:
-            return URLEncoding.default
-        }
+    public var headers: [String: String]? {
+        [:].contentTypeApplicationJson
     }
     
-    public var sampleData: Data {
-        switch self {
-        default:
-            return "{}".data(using: .utf8)!
-        }
-    }
-    
-    public var task: Task {
-        switch self {
-        default:
-            return .request
-        }
+    public var httpBody: Data? {
+        nil
     }
 }

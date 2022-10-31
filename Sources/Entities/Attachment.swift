@@ -1,8 +1,7 @@
 import Foundation
-import Gloss
 
 public struct Attachment: Decodable {
-    public enum AttachmentType: String {
+    public enum AttachmentType: String, Decodable {
         case image = "image"
         case video = "video"
         case gifv = "gifv"
@@ -15,17 +14,12 @@ public struct Attachment: Decodable {
     public let previewUrl: URL?
     public let textUrl: URL?
 
-    public init?(json: JSON) {
-        guard
-            let id: Int = "id" <~~ json,
-            let type: String = "type" <~~ json
-        else { return nil }
-        
-        self.id = id
-        self.type = AttachmentType(rawValue: type)! // todo: overthink as we're intentionally crashing here if the attachment is of other type
-        self.url =  .fromOptional(string: "url" <~~ json)
-        self.remoteUrl =  .fromOptional(string: "remote_url" <~~ json)
-        self.previewUrl = .fromOptional(string: "preview_url" <~~ json)
-        self.textUrl = .fromOptional(string: "text_url" <~~ json)
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case type
+        case url
+        case remoteUrl = "remote_url"
+        case previewUrl = "preview_url"
+        case textUrl = "text_url"
     }
 }

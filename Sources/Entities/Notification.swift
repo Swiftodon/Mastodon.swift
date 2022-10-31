@@ -1,7 +1,7 @@
-import Gloss
+import Foundation
 
 public struct Notification: Decodable {
-    public enum NotificationType: String {
+    public enum NotificationType: String, Decodable {
         case mention = "mention"
         case reblog = "reblog"
         case favourite = "favourite"
@@ -12,20 +12,21 @@ public struct Notification: Decodable {
     public let createdAt: String
     public let account: Account
     public let status: Status
+
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case type
+        case createdAat = "created_at"
+        case account
+        case status
+    }
     
-    public init?(json: JSON) {
-        guard
-            let id: Int = "id" <~~ json,
-            let type: String = "type" <~~ json,
-            let createdAt: String = "created_at" <~~ json,
-            let account: Account = "account" <~~ json,
-            let status: Status = "status" <~~ json
-        else { return nil }
-        
-        self.id = id
-        self.type = NotificationType(rawValue: type)!
-        self.createdAt = createdAt
-        self.account = account
-        self.status = status
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(Int.self, forKey: .id)
+        self.type = try container.decode(NotificationType.self, forKey: .type)
+        self.createdAt = try container.decode(String.self, forKey: .createdAat)
+        self.account = try container.decode(Account.self, forKey: .account)
+        self.status = try container.decode(Status.self, forKey: .status)
     }
 }

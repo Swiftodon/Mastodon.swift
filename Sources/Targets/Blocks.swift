@@ -1,5 +1,4 @@
 import Foundation
-import Moya
 
 extension Mastodon {
     public enum Blocks {
@@ -24,7 +23,7 @@ extension Mastodon.Blocks: TargetType {
     }
     
     /// The HTTP method used in the request.
-    public var method: Moya.Method {
+    public var method: Method {
         switch self {
         case .blocks:
             return .get
@@ -32,31 +31,18 @@ extension Mastodon.Blocks: TargetType {
     }
     
     /// The parameters to be incoded in the request.
-    public var parameters: [String: Any]? {
+    public var queryItems: [String: String]? {
         switch self {
         case .blocks:
             return nil
         }
     }
     
-    /// The method used for parameter encoding.
-    public var parameterEncoding: ParameterEncoding {
-        switch self {
-        case .blocks:
-            return URLEncoding.default
-        }
+    public var headers: [String: String]? {
+        [:].contentTypeApplicationJson
     }
     
-    /// Provides stub data for use in testing.
-    public var sampleData: Data {
-        return "{}".data(using: .utf8)!
-    }
-    
-    /// The type of HTTP task to be performed.
-    public var task: Task {
-        switch self {
-        case .blocks:
-            return .request
-        }
+    public var httpBody: Data? {
+        nil
     }
 }

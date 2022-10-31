@@ -1,4 +1,4 @@
-import Gloss
+import Foundation
 
 public struct Instance: Decodable {
     public let uri: String
@@ -6,14 +6,18 @@ public struct Instance: Decodable {
     public let description: String?
     public let email: String?
     
-    public init?(json: JSON) {
-        guard
-            let uri: String = "uri" <~~ json
-        else { return nil }
-        
-        self.uri = uri
-        self.title = "title" <~~ json
-        self.description = "description" <~~ json
-        self.email = "email" <~~ json
+    enum CodingKeys: CodingKey {
+        case uri
+        case title
+        case description
+        case email
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.uri = try container.decode(String.self, forKey: .uri)
+        self.title = try? container.decodeIfPresent(String.self, forKey: .title)
+        self.description = try? container.decodeIfPresent(String.self, forKey: .description)
+        self.email = try? container.decodeIfPresent(String.self, forKey: .email)
     }
 }

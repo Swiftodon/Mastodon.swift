@@ -1,5 +1,4 @@
 import Foundation
-import Moya
 
 extension Mastodon {
     public enum Search {
@@ -19,48 +18,35 @@ extension Mastodon.Search: TargetType {
     /// The path to be appended to `baseURL` to form the full `URL`.
     public var path: String {
         switch self {
-        case .search(_):
+        case .search:
             return "\(apiPath)"
         }
     }
     
     /// The HTTP method used in the request.
-    public var method: Moya.Method {
+    public var method: Method {
         switch self {
-        case .search(_):
+        case .search:
             return .get
         }
     }
     
     /// The parameters to be incoded in the request.
-    public var parameters: [String: Any]? {
+    public var queryItems: [String: String]? {
         switch self {
         case .search(let query, let resolveNonLocal):
             return [
                 "q": query,
-                "resolve": resolveNonLocal
+                "resolve": resolveNonLocal.asString
             ]
         }
     }
     
-    /// The method used for parameter encoding.
-    public var parameterEncoding: ParameterEncoding {
-        switch self {
-        default:
-            return URLEncoding.default
-        }
+    public var headers: [String: String]? {
+        [:].contentTypeApplicationJson
     }
     
-    /// Provides stub data for use in testing.
-    public var sampleData: Data {
-        return "{}".data(using: .utf8)!
-    }
-    
-    /// The type of HTTP task to be performed.
-    public var task: Task {
-        switch self {
-        default:
-            return .request
-        }
+    public var httpBody: Data? {
+        nil
     }
 }
