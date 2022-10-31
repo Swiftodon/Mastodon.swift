@@ -49,8 +49,8 @@ Please note that the endpoint provided by teh operator overrides the URL stored 
 
 ## Authors
 
-- Marcus Kida <kidmar@mastodon.kida.io>
-- Thomas Bonk <thomas@meandmymac.de>
+- Marcus Kida <@marcus@bearologics.social>
+- Thomas Bonk <@thbonk@mastodon.online>
 
 ## License
 
