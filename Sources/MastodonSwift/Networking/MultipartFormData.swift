@@ -58,13 +58,6 @@ extension Data {
         }
         
         func build() -> Data {
-//            var request = URLRequest(url: url)
-//
-//            request.httpMethod = "POST"
-//            request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-//
-//            httpBody.append(string: "--\(boundary)--")
-//            request.httpBody = httpBody as Data
             return httpBody as Data
         }
     }
