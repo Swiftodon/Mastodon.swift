@@ -6,8 +6,10 @@ public typealias Scopes = [Scope]
 public class MastodonClient {
     
     private let urlSession: URLSession
+    private let baseURL: URL
     
-    public init(urlSession: URLSession = .shared) {
+    public init(baseURL: URL, urlSession: URLSession = .shared) {
+        self.baseURL = baseURL
         self.urlSession = urlSession
     }
 
@@ -17,7 +19,8 @@ public class MastodonClient {
                           url: URL) async throws -> App {
         
         let request = try urlSession.request(
-            for: Mastodon.Apps.register(
+            for: baseURL,
+            target: Mastodon.Apps.register(
                 name,
                 redirectUri,
                 scopes.reduce("") { $0 == "" ? $1 : $0 + " " + $1},
@@ -36,7 +39,8 @@ public class MastodonClient {
                          scope: Scopes) async throws -> AccessToken {
 
         let request = try urlSession.request(
-            for: Mastodon.OAuth.authenticate(app, username, password, scope.reduce("") { $0 == "" ? $1 : $0 + " " + $1})
+            for: baseURL,
+            target: Mastodon.OAuth.authenticate(app, username, password, scope.reduce("") { $0 == "" ? $1 : $0 + " " + $1})
         )
         
         let (data, _) = try await urlSession.data(for: request)
@@ -49,7 +53,8 @@ public class MastodonClient {
                                 sinceId: StatusId? = nil) async throws -> [Status] {
 
         let request = try urlSession.request(
-            for: Mastodon.Timelines.home(maxId, sinceId),
+            for: baseURL,
+            target: Mastodon.Timelines.home(maxId, sinceId),
             withBearerToken: token
         )
         
@@ -64,7 +69,8 @@ public class MastodonClient {
                                   sinceId: StatusId? = nil) async throws -> [Status] {
 
         let request = try urlSession.request(
-            for: Mastodon.Timelines.pub(isLocal, maxId, sinceId),
+            for: baseURL,
+            target: Mastodon.Timelines.pub(isLocal, maxId, sinceId),
             withBearerToken: token
         )
         
@@ -80,7 +86,8 @@ public class MastodonClient {
                                sinceId: StatusId? = nil) async throws -> [Status] {
 
         let request = try urlSession.request(
-            for: Mastodon.Timelines.tag(tag, isLocal, maxId, sinceId),
+            for: baseURL,
+            target: Mastodon.Timelines.tag(tag, isLocal, maxId, sinceId),
             withBearerToken: token
         )
         

@@ -8,12 +8,7 @@ extension Mastodon {
 
 extension Mastodon.Favourites: TargetType {
     fileprivate var apiPath: String { return "/api/v1/favourites" }
-    
-    /// The target's base `URL`.
-    public var baseURL: URL {
-        return Settings.shared.baseURL!
-    }
-    
+
     /// The path to be appended to `baseURL` to form the full `URL`.
     public var path: String {
         switch self {

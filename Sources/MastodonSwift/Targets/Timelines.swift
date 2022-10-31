@@ -13,12 +13,7 @@ extension Mastodon {
 
 extension Mastodon.Timelines: TargetType {
     fileprivate var apiPath: String { return "/api/v1/timelines" }
-    
-    /// The target's base `URL`.
-    public var baseURL: URL {
-        return Settings.shared.baseURL!
-    }
-    
+
     /// The path to be appended to `baseURL` to form the full `URL`.
     public var path: String {
         switch self {
@@ -58,10 +53,10 @@ extension Mastodon.Timelines: TargetType {
         }
 
         if let maxId = maxId {
-            params["max_id"] = maxId.asString
+            params["max_id"] = maxId
         }
         if let sinceId = sinceId {
-            params["since_id"] = sinceId.asString
+            params["since_id"] = sinceId
         }
         if let local = local {
             params["local"] = local.asString

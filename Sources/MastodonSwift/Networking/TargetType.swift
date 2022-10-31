@@ -16,8 +16,6 @@ public enum Method: String {
 }
 
 protocol TargetType {
-        
-    var baseURL: URL { get }
     var path: String { get }
     var method: Method { get }
     var headers: [String: String]? { get }
@@ -26,9 +24,9 @@ protocol TargetType {
 }
 
 extension URLSession {
-    func request(for target: TargetType, withBearerToken token: String? = nil) throws -> URLRequest {
+    func request(for baseURL: URL, target: TargetType, withBearerToken token: String? = nil) throws -> URLRequest {
         
-        var urlComponents = URLComponents(url: target.baseURL, resolvingAgainstBaseURL: false)
+        var urlComponents = URLComponents(url: baseURL.appendingPathComponent(target.path), resolvingAgainstBaseURL: false)
         urlComponents?.queryItems = target.queryItems?.map { URLQueryItem(name: $0.0, value: $0.1) }
         
         guard let url = urlComponents?.url else { throw NetworkingError.cannotCreateUrlRequest }

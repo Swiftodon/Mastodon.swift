@@ -1,6 +1,6 @@
 import Foundation
 
-public typealias StatusId = Int
+public typealias StatusId = String
 public typealias Html = String
 
 public class Status: Decodable {
@@ -25,7 +25,7 @@ public class Status: Decodable {
     public let favourited: Bool
     public let sensitive: Bool
     public let spoilerText: String?
-    public let visiblity: Visibility
+    public let visibility: Visibility
     public let mediaAttachments: [Attachment]
     public let mentions: [Mention]
     public let tags: [Tag]
@@ -36,19 +36,19 @@ public class Status: Decodable {
         case uri
         case url
         case account
-        case inReplyToId
-        case inReplyToAccount
+        case inReplyToId = "in_reply_to_id"
+        case inReplyToAccount = "in_reply_to_account_id"
         case reblog
         case content
-        case createdAt
-        case reblogsCount
-        case favouritesCount
+        case createdAt = "created_at"
+        case reblogsCount = "reblogs_count"
+        case favouritesCount = "favourites_count"
         case reblogged
         case favourited
         case sensitive
-        case spoilerText
-        case visiblity
-        case mediaAttachments
+        case spoilerText = "spoiler_text"
+        case visibility
+        case mediaAttachments = "media_attachments"
         case mentions
         case tags
         case application
@@ -72,7 +72,7 @@ public class Status: Decodable {
         self.reblogged = (try? container.decode(Bool.self, forKey: .reblogged)) ?? false
         self.favourited = (try? container.decode(Bool.self, forKey: .favourited)) ?? false
         self.sensitive = (try? container.decode(Bool.self, forKey: .sensitive)) ?? false
-        self.visiblity = Visibility(rawValue: try container.decode(String.self, forKey: .visiblity))!
+        self.visibility = try container.decode(Visibility.self, forKey: .visibility)
         self.mediaAttachments = (try? container.decode([Attachment].self, forKey: .mediaAttachments)) ?? []
         self.mentions = (try? container.decode([Mention].self, forKey: .mentions)) ?? []
         self.tags = (try? container.decode([Tag].self, forKey: .tags)) ?? []

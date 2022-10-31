@@ -20,11 +20,7 @@ extension Mastodon {
 
 extension Mastodon.Account: TargetType {
     fileprivate var apiPath: String { return "/api/v1/accounts" }
-    
-    public var baseURL: URL {
-        return Settings.shared.baseURL!
-    }
-    
+
     public var path: String {
         switch self {
         case .account(let id):
@@ -72,7 +68,7 @@ extension Mastodon.Account: TargetType {
             ]
         case .relationships(let id):
             return [
-                "id": id.asString // todo: can be array
+                "id": id // todo: can be array
             ]
         case .search(let query, let limit):
             return [
