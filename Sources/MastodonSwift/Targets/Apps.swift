@@ -2,7 +2,7 @@ import Foundation
 
 extension Mastodon {
     public enum Apps {
-        case register(String, String, String, String)
+        case register(clientName: String, redirectUris: String, scopes: String?, website: String?)
     }
 }
 
@@ -10,8 +10,8 @@ extension Mastodon.Apps: TargetType {
     struct Request: Encodable {
         let clientName: String
         let redirectUris: String
-        let scopes: String
-        let website: String
+        let scopes: String?
+        let website: String?
         
         enum CodingKeys: String, CodingKey {
             case clientName = "client_name"

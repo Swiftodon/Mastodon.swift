@@ -2,6 +2,7 @@ import Foundation
 
 public typealias Scope = String
 public typealias Scopes = [Scope]
+public typealias Token = String
 
 public class MastodonClient {
     
@@ -13,18 +14,18 @@ public class MastodonClient {
         self.urlSession = urlSession
     }
 
-    public func createApp(_ name: String,
+    public func createApp(named name: String,
                           redirectUri: String = "urn:ietf:wg:oauth:2.0:oob",
                           scopes: Scopes,
-                          url: URL) async throws -> App {
+                          website: URL) async throws -> App {
         
         let request = try urlSession.request(
             for: baseURL,
             target: Mastodon.Apps.register(
-                name,
-                redirectUri,
-                scopes.reduce("") { $0 == "" ? $1 : $0 + " " + $1},
-                url.absoluteString
+                clientName: name,
+                redirectUris: redirectUri,
+                scopes: scopes.reduce("") { $0 == "" ? $1 : $0 + " " + $1},
+                website: website.absoluteString
             )
         )
         
@@ -33,7 +34,7 @@ public class MastodonClient {
         return try JSONDecoder().decode(App.self, from: data)
     }
     
-    public func getToken(_ app: App,
+    public func getToken(withApp app: App,
                          username: String,
                          password: String,
                          scope: Scopes) async throws -> AccessToken {
@@ -47,9 +48,25 @@ public class MastodonClient {
         
         return try JSONDecoder().decode(AccessToken.self, from: data)
     }
+    
+    public func getAuthenticated(token: Token) -> MastodonClientAuthenticated {
+        MastodonClientAuthenticated(baseURL: baseURL, urlSession: urlSession, token: token)
+    }
+}
 
-    public func getHomeTimeline(_ token: String,
-                                maxId: StatusId? = nil,
+public class MastodonClientAuthenticated {
+    
+    private let token: Token
+    private let baseURL: URL
+    private let urlSession: URLSession
+
+    init(baseURL: URL, urlSession: URLSession, token: Token) {
+        self.token = token
+        self.baseURL = baseURL
+        self.urlSession = urlSession
+    }
+        
+    public func getHomeTimeline(maxId: StatusId? = nil,
                                 sinceId: StatusId? = nil) async throws -> [Status] {
 
         let request = try urlSession.request(
@@ -63,8 +80,7 @@ public class MastodonClient {
         return try JSONDecoder().decode([Status].self, from: data)
     }
 
-    public func getPublicTimeline(_ token: String,
-                                  isLocal: Bool = false,
+    public func getPublicTimeline(isLocal: Bool = false,
                                   maxId: StatusId? = nil,
                                   sinceId: StatusId? = nil) async throws -> [Status] {
 
@@ -79,8 +95,7 @@ public class MastodonClient {
         return try JSONDecoder().decode([Status].self, from: data)
     }
 
-    public func getTagTimeline(_ token: String,
-                               tag: String,
+    public func getTagTimeline(tag: String,
                                isLocal: Bool = false,
                                maxId: StatusId? = nil,
                                sinceId: StatusId? = nil) async throws -> [Status] {
