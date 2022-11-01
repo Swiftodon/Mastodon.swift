@@ -1,0 +1,103 @@
+import XCTest
+@testable import MastodonSwift
+
+class MastodonSwiftTests: XCTestCase {
+    
+    private var session: URLSession {
+        MockURLSession.urlSession
+    }
+    
+    func testCreateApp() async throws {
+        MockURLProtocol.error = nil
+        MockURLProtocol.requestHandler = { _ in
+            createAppMockResponse
+        }
+        
+        let appName = "MockyMcMockface"
+        
+        let client = MastodonClient(baseURL: URL(string: "https://bearologics.social")!, urlSession: session)
+
+        let response = try await client.createApp(
+            named: appName,
+            scopes: ["read"],
+            website: URL(string: "https://bearologics.com")!)
+        
+        XCTAssertNotNil(response)
+        XCTAssertEqual(appName, response.name)
+    }
+    
+    func testAuthentication() async throws {
+        MockURLProtocol.error = nil
+        MockURLProtocol.requestHandler = { _ in
+            getAuthenticateMockResponse
+        }
+        
+        let client = MastodonClient(baseURL: URL(string: "https://bearologics.social")!, urlSession: session)
+        
+        let app = App(
+            clientId: "a1a2a3a4a5",
+            clientSecret: "s3cr3t"
+        )
+        
+        let response = try await client.getToken(
+            withApp: app,
+            username: "test+account@host.tld",
+            password: "pa4w0rd",
+            scope: ["read", "write", "follow"]
+        )
+        
+        XCTAssertEqual(response.token, "s3cr3t_t0k3n")
+    }
+    
+    func testGetHomeTimeline() async throws {
+        let token = "s3cr3t_t0k3n"
+        
+        MockURLProtocol.error = nil
+        MockURLProtocol.requestHandler = { _ in
+            getHomeTinelineMockResponse
+        }
+        
+        let client = MastodonClient(baseURL: URL(string: "https://bearologics.social")!, urlSession: session)
+            .getAuthenticated(token: token)
+        
+        let result = try await client.getHomeTimeline()
+        
+        XCTAssertEqual(result.first?.content, "<p>TEST</p>")
+    }
+    
+    func testGetPublicTimeline() async throws {
+        let token = "s3cr3t_t0k3n"
+        
+        MockURLProtocol.error = nil
+        MockURLProtocol.requestHandler = { _ in
+            getHomeTinelineMockResponse
+        }
+        
+        let client = MastodonClient(baseURL: URL(string: "https://bearologics.social")!, urlSession: session)
+            .getAuthenticated(token: token)
+
+        let result = try await client.getPublicTimeline()
+        
+        XCTAssertEqual(result.first?.content, "<p>TEST</p>")
+    }
+    
+    func testGetTagTimeline() async throws {
+        let token = "s3cr3t_t0k3n"
+        
+        MockURLProtocol.error = nil
+        MockURLProtocol.requestHandler = { _ in
+            getHomeTinelineMockResponse
+        }
+        
+        let client = MastodonClient(baseURL: URL(string: "https://bearologics.social")!, urlSession: session)
+            .getAuthenticated(token: token)
+
+        let result = try await client.getTagTimeline(tag: "TEST")
+        
+        XCTAssertEqual(result.first?.content, "<p>TEST</p>")
+    }
+
+    static var allTests = [
+        ("testAuthentication", testAuthentication),
+    ]
+}
