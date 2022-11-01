@@ -42,8 +42,6 @@ let client = MastodonClient(baseURL: URL(string: "https://bearologics.social")!)
 let result = try await client.getHomeTimeline()
 ```
 
-Please note that the endpoint provided by teh operator overrides the URL stored in the settings singleton.
-
 ## Requirements
 
 - `Xcode 14 / Swift 5`
