@@ -4,49 +4,43 @@ public typealias Scope = String
 public typealias Scopes = [Scope]
 public typealias Token = String
 
-public class MastodonClient {
+protocol MastodonClientProtocol {
+    static func request(for baseURL: URL, target: TargetType, withBearerToken token: String?) throws -> URLRequest
+}
+
+extension MastodonClientProtocol {
+    public static func request(for baseURL: URL, target: TargetType, withBearerToken token: String? = nil) throws -> URLRequest {
+        
+        var urlComponents = URLComponents(url: baseURL.appendingPathComponent(target.path), resolvingAgainstBaseURL: false)
+        urlComponents?.queryItems = target.queryItems?.map { URLQueryItem(name: $0.0, value: $0.1) }
+        
+        guard let url = urlComponents?.url else { throw NetworkingError.cannotCreateUrlRequest }
+        
+        var request = URLRequest(url: url)
+        
+        target.headers?.forEach { header in
+            request.setValue(header.1, forHTTPHeaderField: header.0)
+        }
+        
+        if let token = token {
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+        
+        request.httpMethod = target.method.rawValue
+        request.httpBody = target.httpBody
+        
+        return request
+    }
+}
+
+public class MastodonClient: MastodonClientProtocol {
     
-    private let urlSession: URLSession
-    private let baseURL: URL
+    let urlSession: URLSession
+    let baseURL: URL
     
     public init(baseURL: URL, urlSession: URLSession = .shared) {
         self.baseURL = baseURL
         self.urlSession = urlSession
-    }
-
-    public func createApp(named name: String,
-                          redirectUri: String = "urn:ietf:wg:oauth:2.0:oob",
-                          scopes: Scopes,
-                          website: URL) async throws -> App {
-        
-        let request = try urlSession.request(
-            for: baseURL,
-            target: Mastodon.Apps.register(
-                clientName: name,
-                redirectUris: redirectUri,
-                scopes: scopes.reduce("") { $0 == "" ? $1 : $0 + " " + $1},
-                website: website.absoluteString
-            )
-        )
-        
-        let (data, _) = try await urlSession.data(for: request)
-        
-        return try JSONDecoder().decode(App.self, from: data)
-    }
-    
-    public func getToken(withApp app: App,
-                         username: String,
-                         password: String,
-                         scope: Scopes) async throws -> AccessToken {
-
-        let request = try urlSession.request(
-            for: baseURL,
-            target: Mastodon.OAuth.authenticate(app, username, password, scope.reduce("") { $0 == "" ? $1 : $0 + " " + $1})
-        )
-        
-        let (data, _) = try await urlSession.data(for: request)
-        
-        return try JSONDecoder().decode(AccessToken.self, from: data)
     }
     
     public func getAuthenticated(token: Token) -> MastodonClientAuthenticated {
@@ -54,7 +48,7 @@ public class MastodonClient {
     }
 }
 
-public class MastodonClientAuthenticated {
+public class MastodonClientAuthenticated: MastodonClientProtocol {
     
     private let token: Token
     private let baseURL: URL
@@ -69,7 +63,7 @@ public class MastodonClientAuthenticated {
     public func getHomeTimeline(maxId: StatusId? = nil,
                                 sinceId: StatusId? = nil) async throws -> [Status] {
 
-        let request = try urlSession.request(
+        let request = try Self.request(
             for: baseURL,
             target: Mastodon.Timelines.home(maxId, sinceId),
             withBearerToken: token
@@ -84,7 +78,7 @@ public class MastodonClientAuthenticated {
                                   maxId: StatusId? = nil,
                                   sinceId: StatusId? = nil) async throws -> [Status] {
 
-        let request = try urlSession.request(
+        let request = try Self.request(
             for: baseURL,
             target: Mastodon.Timelines.pub(isLocal, maxId, sinceId),
             withBearerToken: token
@@ -100,7 +94,7 @@ public class MastodonClientAuthenticated {
                                maxId: StatusId? = nil,
                                sinceId: StatusId? = nil) async throws -> [Status] {
 
-        let request = try urlSession.request(
+        let request = try Self.request(
             for: baseURL,
             target: Mastodon.Timelines.tag(tag, isLocal, maxId, sinceId),
             withBearerToken: token

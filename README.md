@@ -5,9 +5,21 @@
 
 ## Howto
 
-This client is designed to connect to any Mastodon instance and interact with it. As of the time of writing this (08th April 2017) the Moya Providers are feature complete with [tootsuite/mastodon](https://github.com/tootsuite/mastodon).
+This client is designed to connect to any Mastodon instance and interact with it.
 
-`MastodonClient` contains a few convenience methods to create Apps (OAuth Clients) and interact with the API but you should use the Moya Targets directly for the time being (as those are feature complete).
+`MastodonClient` contains a few convenience methods to create Apps (OAuth Clients) and interact with the API but you should use the URLSession TargetTypes directly for the time being (as those are feature complete), e.g. for getting your Home Timeline:
+
+```swift
+let request = try MastodonClient.request(
+    for: URL(string: "https://mastodon.social")!,
+    target: Mastodon.Timelines.home(nil, nil),
+    withBearerToken: token
+)
+
+let (data, _) = try await session.data(for: request)
+
+let result = try JSONDecoder().decode([Status].self, from: data)
+```
 
 Given you've got an OAuth Client
 
@@ -18,7 +30,7 @@ let app = App(clientId: "…", clientSecret: "…")
 Logging in is as easy as this then:
 
 ```swift
-let client = MastodonClient(baseURL: URL(string: "https://host.tld")!)
+let client = MastodonClient(baseURL: URL(string: "https://mastodon.tld")!)
 
 let app = App(
     clientId: "a1a2a3a4a5",
@@ -36,7 +48,7 @@ let response = try await client.getToken(
 Provided login was successful and you've retrieved an `AccessToken` you're free to use all the other APIs, e.g. to retrieve your home timeline using `MastodonClientAuthenticated` e.g.:
 
 ```swift
-let client = MastodonClient(baseURL: URL(string: "https://bearologics.social")!)
+let client = MastodonClient(baseURL: URL(string: "https://mastodon.tld")!)
     .getAuthenticated(token: token)
 
 let result = try await client.getHomeTimeline()
