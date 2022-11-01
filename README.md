@@ -33,12 +33,13 @@ let response = try await client.getToken(
 )
 ```
 
-Provided login was successful and you've retrieved an `AccessToken` you're free to use all the other APIs, e.g. to retrieve your home timeline:
+Provided login was successful and you've retrieved an `AccessToken` you're free to use all the other APIs, e.g. to retrieve your home timeline using `MastodonClientAuthenticated` e.g.:
 
 ```swift
 let client = MastodonClient(baseURL: URL(string: "https://bearologics.social")!)
+    .getAuthenticated(token: token)
 
-let result = try await client.getHomeTimeline(token)
+let result = try await client.getHomeTimeline()
 ```
 
 Please note that the endpoint provided by teh operator overrides the URL stored in the settings singleton.
