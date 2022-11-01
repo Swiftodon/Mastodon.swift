@@ -65,6 +65,27 @@ class MastodonSwiftTests: XCTestCase {
         XCTAssertEqual(result.first?.content, "<p>TEST</p>")
     }
     
+    func testGetHomeTimeline_withoutConvenienceMethod() async throws {
+        let token = "s3cr3t_t0k3n"
+        
+        MockURLProtocol.error = nil
+        MockURLProtocol.requestHandler = { _ in
+            getHomeTinelineMockResponse
+        }
+        
+        let request = try MastodonClient.request(
+            for: URL(string: "https://bearologics.social")!,
+            target: Mastodon.Timelines.home(nil, nil),
+            withBearerToken: token
+        )
+        
+        let (data, _) = try await session.data(for: request)
+        
+        let result = try JSONDecoder().decode([Status].self, from: data)
+        
+        XCTAssertEqual(result.first?.content, "<p>TEST</p>")
+    }
+    
     func testGetPublicTimeline() async throws {
         let token = "s3cr3t_t0k3n"
         
