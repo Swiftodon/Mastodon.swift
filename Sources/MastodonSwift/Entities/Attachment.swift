@@ -7,7 +7,7 @@ public struct Attachment: Decodable {
         case gifv = "gifv"
     }
     
-    public let id: Int
+    public let id: String
     public let type: AttachmentType
     public let url: URL?
     public let remoteUrl: URL?
