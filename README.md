@@ -1,7 +1,8 @@
 # MastodonClient
 
-[![License](https://img.shields.io/cocoapods/l/MastodonClient.svg?style=flat)](http://cocoapods.org/pods/MastodonClient)
-[![Platform](https://img.shields.io/cocoapods/p/MastodonClient.svg?style=flat)](http://cocoapods.org/pods/MastodonClient)
+![GitHub](https://img.shields.io/github/license/Swiftodon/Mastodon.swift)
+
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/Swiftodon/Mastodon.swift/Run%20tests/main)
 
 ## Howto
 
