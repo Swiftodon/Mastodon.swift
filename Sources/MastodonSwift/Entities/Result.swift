@@ -2,7 +2,7 @@ import Foundation
 
 public typealias Hashtag = String
 
-public struct Result: Decodable {
+public struct Result: Codable {
     public let accounts: [Account]
     public let statuses: [Status]
     public let hashtags: [Hashtag]

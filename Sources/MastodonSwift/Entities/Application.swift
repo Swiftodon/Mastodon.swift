@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Application: Decodable {
+public struct Application: Codable {
     public let name: String
     public let website: URL?
 }

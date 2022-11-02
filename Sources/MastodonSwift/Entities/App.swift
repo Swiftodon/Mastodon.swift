@@ -1,6 +1,6 @@
 import Foundation
 
-public struct App: Decodable {
+public struct App: Codable {
     public let id: String
     public let name: String
     public let redirectUri: String

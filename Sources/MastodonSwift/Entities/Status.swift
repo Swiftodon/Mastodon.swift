@@ -3,8 +3,8 @@ import Foundation
 public typealias StatusId = String
 public typealias Html = String
 
-public class Status: Decodable {
-    public enum Visibility: String, Decodable {
+public class Status: Codable {
+    public enum Visibility: String, Codable {
         case pub = "public"
         case unlisted = "unlisted"
         case priv = "private"
@@ -77,5 +77,42 @@ public class Status: Decodable {
         self.mentions = (try? container.decode([Mention].self, forKey: .mentions)) ?? []
         self.tags = (try? container.decode([Tag].self, forKey: .tags)) ?? []
         self.application = try? container.decode(Application.self, forKey: .application)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(id, forKey: .id)
+        try container.encode(uri, forKey: .uri)
+        try container.encode(url, forKey: .url)
+        if let account {
+            try container.encode(account, forKey: .account)
+        }
+        try container.encode(content, forKey: .content)
+        try container.encode(createdAt, forKey: .createdAt)
+        if let inReplyToId {
+            try container.encode(inReplyToId, forKey: .inReplyToId)
+        }
+        if let inReplyToAccount {
+            try container.encode(inReplyToAccount, forKey: .inReplyToAccount)
+        }
+        if let reblog {
+            try container.encode(reblog, forKey: .reblog)
+        }
+        if let spoilerText {
+            try container.encode(spoilerText, forKey: .spoilerText)
+        }
+        try container.encode(reblogsCount, forKey: .reblogsCount)
+        try container.encode(favouritesCount, forKey: .favouritesCount)
+        try container.encode(reblogged, forKey: .reblogged)
+        try container.encode(favourited, forKey: .favourited)
+        try container.encode(sensitive, forKey: .sensitive)
+        try container.encode(visibility, forKey: .visibility)
+        try container.encode(mediaAttachments, forKey: .mediaAttachments)
+        try container.encode(mentions, forKey: .mentions)
+        try container.encode(tags, forKey: .tags)
+        if let application {
+            try container.encode(application, forKey: .application)
+        }
     }
 }
