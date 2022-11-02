@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Mention: Decodable {
+public struct Mention: Codable {
     public let url: String
     public let username: String
     public let acct: String

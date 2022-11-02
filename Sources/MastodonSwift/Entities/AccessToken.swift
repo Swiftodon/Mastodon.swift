@@ -1,6 +1,6 @@
 import Foundation
 
-public struct AccessToken: Decodable {
+public struct AccessToken: Codable {
     public let token: String
     
     private enum CodingKeys: String, CodingKey {

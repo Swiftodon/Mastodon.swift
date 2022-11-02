@@ -1,5 +1,5 @@
 import Foundation
 
-public struct Error: Decodable {
+public struct Error: Codable {
     public let error: String
 }

@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Context: Decodable {
+public struct Context: Codable {
     public let ancestors: [Status]
     public let descendants: [Status]
 

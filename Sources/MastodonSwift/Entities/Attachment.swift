@@ -1,7 +1,7 @@
 import Foundation
 
-public struct Attachment: Decodable {
-    public enum AttachmentType: String, Decodable {
+public struct Attachment: Codable {
+    public enum AttachmentType: String, Codable {
         case image = "image"
         case video = "video"
         case gifv = "gifv"

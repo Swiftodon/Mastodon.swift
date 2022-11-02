@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Relationship: Decodable {
+public struct Relationship: Codable {
     public let following: Bool?
     public let followedBy: Bool?
     public let blocking: Bool?

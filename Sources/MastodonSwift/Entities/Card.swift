@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Card: Decodable {
+public struct Card: Codable {
     public let url: URL?
     public let title: String
     public let description: String?

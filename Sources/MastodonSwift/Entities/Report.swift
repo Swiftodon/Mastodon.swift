@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Report: Decodable {
+public struct Report: Codable {
     public let id: String
     public let actionTaken: String?
 

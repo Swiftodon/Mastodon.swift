@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Instance: Decodable {
+public struct Instance: Codable {
     public let uri: String
     public let title: String?
     public let description: String?
