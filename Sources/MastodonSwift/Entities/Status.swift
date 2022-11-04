@@ -12,7 +12,7 @@ public class Status: Codable {
     }
     public let id: StatusId
     public let uri: String
-    public let url: URL
+    public let url: URL?
     public let account: Account?
     public let inReplyToId: AccountId?
     public let inReplyToAccount: StatusId?
@@ -59,7 +59,7 @@ public class Status: Codable {
 
         self.id = try container.decode(StatusId.self, forKey: .id)
         self.uri = try container.decode(String.self, forKey: .uri)
-        self.url = try container.decode(URL.self, forKey: .url)
+        self.url = try? container.decode(URL.self, forKey: .url)
         self.account = try? container.decode(Account.self, forKey: .account)
         self.content = try container.decode(Html.self, forKey: .content)
         self.createdAt = try container.decode(String.self, forKey: .createdAt)
@@ -84,7 +84,9 @@ public class Status: Codable {
         
         try container.encode(id, forKey: .id)
         try container.encode(uri, forKey: .uri)
-        try container.encode(url, forKey: .url)
+        if let url {
+            try container.encode(url, forKey: .url)
+        }
         if let account {
             try container.encode(account, forKey: .account)
         }
