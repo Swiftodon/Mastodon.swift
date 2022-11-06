@@ -74,6 +74,6 @@ public extension MastodonClient {
 
 private extension [String] {
     var asScopeString: String {
-        reduce("") { $0 == "" ? $1 : $0 + " " + $1}
+        joined(separator: " ")
     }
 }
