@@ -7,6 +7,15 @@
 
 import Foundation
 
+#if os(iOS)
+import UIKit
+public typealias AuthenticatableViewController = UIViewController
+#elseif os(macOS)
+import AppKit
+public typealias AuthenticatableViewController = NSViewController
+#endif
+import AuthenticationServices
+
 public extension MastodonClient {
     func createApp(named name: String,
                           redirectUri: String = "urn:ietf:wg:oauth:2.0:oob",
@@ -27,6 +36,13 @@ public extension MastodonClient {
         
         return try JSONDecoder().decode(App.self, from: data)
     }
+    
+    #if os(iOS) || os(macOS)
+    func authenticate(withApp app: App, on viewController: AuthenticatableViewController) {
+        let authRequest = ASAuthorizationRequest()
+        let authController = ASAuthorizationController(authorizationRequests: <#T##[ASAuthorizationRequest]#>)
+    }
+    #endif
     
     func getToken(withApp app: App,
                          username: String,
