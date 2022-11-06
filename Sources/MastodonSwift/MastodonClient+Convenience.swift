@@ -55,7 +55,7 @@ public extension MastodonClient {
         }
     }
 
-    @available(*, deprecated, message: "The password flow is discoured and won't support 2FA. Please use authneticate(app:)")
+    @available(*, deprecated, message: "The password flow is discoured and won't support 2FA. Please use authentiate(app:, scope:)")
     func getToken(withApp app: App,
                          username: String,
                          password: String,
