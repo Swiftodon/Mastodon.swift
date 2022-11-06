@@ -6,15 +6,7 @@
 //
 
 import Foundation
-
-#if os(iOS)
-import UIKit
-public typealias AuthenticatableViewController = UIViewController
-#elseif os(macOS)
-import AppKit
-public typealias AuthenticatableViewController = NSViewController
-#endif
-import AuthenticationServices
+import OAuthSwift
 
 public extension MastodonClient {
     func createApp(named name: String,
@@ -37,13 +29,33 @@ public extension MastodonClient {
         return try JSONDecoder().decode(App.self, from: data)
     }
     
-    #if os(iOS) || os(macOS)
-    func authenticate(withApp app: App, on viewController: AuthenticatableViewController) {
-        let authRequest = ASAuthorizationRequest()
-        let authController = ASAuthorizationController(authorizationRequests: <#T##[ASAuthorizationRequest]#>)
+    func authentiate(app: App, scope: Scopes) async throws -> OAuthSwiftCredential { // todo: we should not load OAuthSwift objects here
+        oauthClient = OAuth2Swift(
+            consumerKey: app.clientId,
+            consumerSecret: app.clientSecret,
+            authorizeUrl: baseURL.appendingPathComponent("oauth/authorize"),
+            responseType: "token"
+        )
+        
+        return try await withCheckedThrowingContinuation { [weak self] continuation in
+            self?.oAuthContinuation = continuation
+            oAuthHandle = oauthClient?.authorize(
+                withCallbackURL: app.redirectUri,
+                scope: scope.asScopeString,
+                state: "MASToDON_AUTH",
+                completionHandler: { result in
+                    switch result {
+                    case let .success((credentials, response, parameters)):
+                        continuation.resume(with: .success(credentials))
+                    case let .failure(error):
+                        continuation.resume(throwing: error)
+                    }
+                }
+            )
+        }
     }
-    #endif
-    
+
+    @available(*, deprecated, message: "The password flow is discoured and won't support 2FA. Please use authneticate(app:)")
     func getToken(withApp app: App,
                          username: String,
                          password: String,
@@ -51,11 +63,17 @@ public extension MastodonClient {
 
         let request = try Self.request(
             for: baseURL,
-            target: Mastodon.OAuth.authenticate(app, username, password, scope.reduce("") { $0 == "" ? $1 : $0 + " " + $1})
+            target: Mastodon.OAuth.authenticate(app, username, password, scope.asScopeString)
         )
         
         let (data, _) = try await urlSession.data(for: request)
         
         return try JSONDecoder().decode(AccessToken.self, from: data)
+    }
+}
+
+private extension [String] {
+    var asScopeString: String {
+        reduce("") { $0 == "" ? $1 : $0 + " " + $1}
     }
 }

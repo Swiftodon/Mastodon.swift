@@ -1,8 +1,13 @@
 import Foundation
+import OAuthSwift
 
 public typealias Scope = String
 public typealias Scopes = [Scope]
 public typealias Token = String
+
+public enum MastodonClientError: Swift.Error {
+    case oAuthCancelled
+}
 
 protocol MastodonClientProtocol {
     static func request(for baseURL: URL, target: TargetType, withBearerToken token: String?) throws -> URLRequest
@@ -38,6 +43,11 @@ public class MastodonClient: MastodonClientProtocol {
     let urlSession: URLSession
     let baseURL: URL
     
+    /// oAuth
+    var oauthClient: OAuth2Swift?
+    var oAuthHandle: OAuthSwiftRequestHandle?
+    var oAuthContinuation: CheckedContinuation<OAuthSwiftCredential, Swift.Error>?
+    
     public init(baseURL: URL, urlSession: URLSession = .shared) {
         self.baseURL = baseURL
         self.urlSession = urlSession
@@ -45,6 +55,11 @@ public class MastodonClient: MastodonClientProtocol {
     
     public func getAuthenticated(token: Token) -> MastodonClientAuthenticated {
         MastodonClientAuthenticated(baseURL: baseURL, urlSession: urlSession, token: token)
+    }
+    
+    deinit {
+        oAuthContinuation?.resume(throwing: MastodonClientError.oAuthCancelled)
+        oAuthHandle?.cancel()
     }
 }
 
