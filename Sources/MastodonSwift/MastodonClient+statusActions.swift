@@ -1,5 +1,5 @@
 //
-//  MastodonClientAuthenticated+statusActions.swift
+//  MastodonClientAuthenticated+StatusActions.swift
 //  
 //
 //  Created by Thomas Bonk on 05.11.22.
