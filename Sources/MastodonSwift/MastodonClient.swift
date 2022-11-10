@@ -50,9 +50,9 @@ public class MastodonClient: MastodonClientProtocol {
 
 public class MastodonClientAuthenticated: MastodonClientProtocol {
     
-    private let token: Token
-    private let baseURL: URL
-    private let urlSession: URLSession
+    internal let token: Token
+    internal let baseURL: URL
+    internal let urlSession: URLSession
 
     init(baseURL: URL, urlSession: URLSession, token: Token) {
         self.token = token
