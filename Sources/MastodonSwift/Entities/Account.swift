@@ -24,7 +24,7 @@ public struct Account: Codable {
         case followersCount = "followers_count"
         case followingCount = "following_count"
         case statusesCount = "statuses_count"
-        case displayName
+        case displayName = "display_name"
         case note
         case url
         case avatar
