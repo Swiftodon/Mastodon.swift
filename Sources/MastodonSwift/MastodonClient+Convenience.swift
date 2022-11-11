@@ -50,6 +50,7 @@ public extension MastodonClient {
                     case let .failure(error):
                         continuation.resume(throwing: error)
                     }
+                    self?.oAuthContinuation = nil
                 }
             )
         }
