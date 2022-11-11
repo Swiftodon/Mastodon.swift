@@ -45,7 +45,7 @@ public extension MastodonClient {
                 state: "MASToDON_AUTH",
                 completionHandler: { result in
                     switch result {
-                    case let .success((credentials, response, parameters)):
+                    case let .success((credentials, _, _)):
                         continuation.resume(with: .success(credentials))
                     case let .failure(error):
                         continuation.resume(throwing: error)
@@ -53,6 +53,10 @@ public extension MastodonClient {
                 }
             )
         }
+    }
+    
+    static func handleOAuthResponse(url: URL) {
+        OAuthSwift.handle(url: url)
     }
 
     @available(*, deprecated, message: "The password flow is discoured and won't support 2FA. Please use authentiate(app:, scope:)")
