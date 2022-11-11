@@ -34,6 +34,7 @@ public extension MastodonClient {
             consumerKey: app.clientId,
             consumerSecret: app.clientSecret,
             authorizeUrl: baseURL.appendingPathComponent("oauth/authorize"),
+            accessTokenUrl: baseURL.appendingPathComponent("oauth/token"),
             responseType: "code"
         )
         
