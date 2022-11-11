@@ -34,7 +34,7 @@ public extension MastodonClient {
             consumerKey: app.clientId,
             consumerSecret: app.clientSecret,
             authorizeUrl: baseURL.appendingPathComponent("oauth/authorize"),
-            responseType: "token"
+            responseType: "code"
         )
         
         return try await withCheckedThrowingContinuation { [weak self] continuation in
