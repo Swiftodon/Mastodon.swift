@@ -29,7 +29,7 @@ public extension MastodonClient {
         return try JSONDecoder().decode(App.self, from: data)
     }
     
-    func authentiate(app: App, scope: Scopes) async throws -> OAuthSwiftCredential { // todo: we should not load OAuthSwift objects here
+    func authenticate(app: App, scope: Scopes) async throws -> OAuthSwiftCredential { // todo: we should not load OAuthSwift objects here
         oauthClient = OAuth2Swift(
             consumerKey: app.clientId,
             consumerSecret: app.clientSecret,
