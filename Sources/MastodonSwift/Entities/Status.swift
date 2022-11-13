@@ -27,6 +27,7 @@ public class Status: Codable {
     public let spoilerText: String?
     public let visibility: Visibility
     public let mediaAttachments: [Attachment]
+    public let card: Card?
     public let mentions: [Mention]
     public let tags: [Tag]
     public let application: Application?
@@ -49,6 +50,7 @@ public class Status: Codable {
         case spoilerText = "spoiler_text"
         case visibility
         case mediaAttachments = "media_attachments"
+        case card
         case mentions
         case tags
         case application
@@ -74,6 +76,7 @@ public class Status: Codable {
         self.sensitive = (try? container.decode(Bool.self, forKey: .sensitive)) ?? false
         self.visibility = try container.decode(Visibility.self, forKey: .visibility)
         self.mediaAttachments = (try? container.decode([Attachment].self, forKey: .mediaAttachments)) ?? []
+        self.card = try? container.decode(Card.self, forKey: .card)
         self.mentions = (try? container.decode([Mention].self, forKey: .mentions)) ?? []
         self.tags = (try? container.decode([Tag].self, forKey: .tags)) ?? []
         self.application = try? container.decode(Application.self, forKey: .application)
@@ -111,6 +114,9 @@ public class Status: Codable {
         try container.encode(sensitive, forKey: .sensitive)
         try container.encode(visibility, forKey: .visibility)
         try container.encode(mediaAttachments, forKey: .mediaAttachments)
+        if let card {
+            try container.encode(card, forKey: .card)
+        }
         try container.encode(mentions, forKey: .mentions)
         try container.encode(tags, forKey: .tags)
         if let application {
