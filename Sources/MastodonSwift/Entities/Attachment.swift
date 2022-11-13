@@ -2,24 +2,30 @@ import Foundation
 
 public struct Attachment: Codable {
     public enum AttachmentType: String, Codable {
-        case image = "image"
-        case video = "video"
-        case gifv = "gifv"
+        case unknown    = "unknown"
+        case image      = "image"
+        case gifv       = "gifv"
+        case video      = "video"
+        case audio      = "audio"
     }
     
     public let id: String
     public let type: AttachmentType
-    public let url: URL?
+    public let url: URL
+    public let previewUrl: URL
+
     public let remoteUrl: URL?
-    public let previewUrl: URL?
-    public let textUrl: URL?
+    public let description: String?
+    public let blurhash: String?
 
     private enum CodingKeys: String, CodingKey {
         case id
         case type
         case url
-        case remoteUrl = "remote_url"
         case previewUrl = "preview_url"
-        case textUrl = "text_url"
+
+        case remoteUrl = "remote_url"
+        case description
+        case blurhash
     }
 }
