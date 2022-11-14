@@ -12,7 +12,7 @@ public struct Attachment: Codable {
     public let id: String
     public let type: AttachmentType
     public let url: URL
-    public let previewUrl: URL
+    public let previewUrl: URL?
 
     public let remoteUrl: URL?
     public let description: String?
