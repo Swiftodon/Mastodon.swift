@@ -5,13 +5,13 @@ public struct Card: Codable {
         case link = "link"   // Link OEmbed
         case photo = "photo" // Photo OEmbed
         case video = "video" // Video OEmbed
-        case rich = "richt"  // iframe OEmbed. Not currently accepted, so won't show up in practice.
+        case rich = "rich"  // iframe OEmbed. Not currently accepted, so won't show up in practice.
     }
 
-    public let url: URL
-    public let title: String
-    public let description: String
-    public let type: CardType
+    public let url: URL?
+    public let title: String?
+    public let description: String?
+    public let type: CardType?
 
     public let authorName: String?
     public let authorUrl: URL?
