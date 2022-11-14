@@ -11,7 +11,7 @@ public struct Card: Codable {
     public let url: URL
     public let title: String
     public let description: String
-    public let type: CardType?
+    public let type: CardType
 
     public let authorName: String?
     public let authorUrl: String?
