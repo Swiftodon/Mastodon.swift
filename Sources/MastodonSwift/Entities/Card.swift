@@ -18,8 +18,8 @@ public struct Card: Codable {
     public let providerName: String?
     public let providerUrl: URL?
     public let html: String?
-    public let width: Int?
-    public let height: Int?
+    public let width: String?
+    public let height: String?
     public let image: URL?
     public let embedUrl: URL?
     public let blurhash: String?
