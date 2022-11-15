@@ -119,4 +119,28 @@ public class MastodonClientAuthenticated: MastodonClientProtocol {
         
         return try JSONDecoder().decode([Status].self, from: data)
     }
+
+    public func saveMarkers(_ markers: [Mastodon.Markers.Timeline: StatusId]) async throws -> Markers {
+        let request = try Self.request(
+            for: baseURL,
+            target: Mastodon.Markers.set(markers),
+            withBearerToken: token
+        )
+
+        let (data, _) = try await urlSession.data(for: request)
+
+        return try JSONDecoder().decode(Markers.self, from: data)
+    }
+
+    public func readMarkers(_ markers: Set<Mastodon.Markers.Timeline>) async throws -> Markers {
+        let request = try Self.request(
+            for: baseURL,
+            target: Mastodon.Markers.read(markers),
+            withBearerToken: token
+        )
+
+        let (data, _) = try await urlSession.data(for: request)
+
+        return try JSONDecoder().decode(Markers.self, from: data)
+    }
 }
