@@ -46,9 +46,15 @@ extension Mastodon.Markers: TargetType {
                 return nil
 
             case .read(let markers):
-                return [
-                    "timeline[]": "\(markers.map { $0.rawValue }.joined(separator: ","))"
-                ]
+                if markers.count > 1 {
+                    return [
+                        "timeline[]": "[\(markers.map { $0.rawValue }.joined(separator: ","))]"
+                    ]
+                } else {
+                    return [
+                        "timeline[]": "\(markers.map { $0.rawValue }.joined(separator: ","))"
+                    ]
+                }
         }
     }
 
