@@ -47,7 +47,7 @@ extension Mastodon.Markers: TargetType {
 
             case .read(let markers):
                 return [
-                    "timeline[]": "[\(markers.map { "\"\($0.rawValue)\"" }.joined(separator: ","))]"
+                    "timeline[]": "[\(markers.map { $0.rawValue }.joined(separator: ","))]"
                 ]
         }
     }
