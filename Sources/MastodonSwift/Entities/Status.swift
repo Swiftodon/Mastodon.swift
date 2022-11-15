@@ -24,6 +24,9 @@ public class Status: Codable {
     public let reblogged: Bool
     public let favourited: Bool
     public let sensitive: Bool
+    public let bookmarked: Bool
+    public let pinned: Bool
+    public let muted: Bool
     public let spoilerText: String?
     public let visibility: Visibility
     public let mediaAttachments: [Attachment]
@@ -47,6 +50,9 @@ public class Status: Codable {
         case reblogged
         case favourited
         case sensitive
+        case bookmarked
+        case pinned
+        case muted
         case spoilerText = "spoiler_text"
         case visibility
         case mediaAttachments = "media_attachments"
@@ -74,6 +80,9 @@ public class Status: Codable {
         self.reblogged = (try? container.decode(Bool.self, forKey: .reblogged)) ?? false
         self.favourited = (try? container.decode(Bool.self, forKey: .favourited)) ?? false
         self.sensitive = (try? container.decode(Bool.self, forKey: .sensitive)) ?? false
+        self.bookmarked = (try? container.decode(Bool.self, forKey: .bookmarked)) ?? false
+        self.pinned = (try? container.decode(Bool.self, forKey: .pinned)) ?? false
+        self.muted = (try? container.decode(Bool.self, forKey: .muted)) ?? false
         self.visibility = try container.decode(Visibility.self, forKey: .visibility)
         self.mediaAttachments = (try? container.decode([Attachment].self, forKey: .mediaAttachments)) ?? []
         self.card = try? container.decode(Card.self, forKey: .card)
@@ -111,6 +120,9 @@ public class Status: Codable {
         try container.encode(favouritesCount, forKey: .favouritesCount)
         try container.encode(reblogged, forKey: .reblogged)
         try container.encode(favourited, forKey: .favourited)
+        try container.encode(bookmarked, forKey: .bookmarked)
+        try container.encode(pinned, forKey: .pinned)
+        try container.encode(muted, forKey: .muted)
         try container.encode(sensitive, forKey: .sensitive)
         try container.encode(visibility, forKey: .visibility)
         try container.encode(mediaAttachments, forKey: .mediaAttachments)
