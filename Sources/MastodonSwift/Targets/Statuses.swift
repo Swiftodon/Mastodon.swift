@@ -19,6 +19,8 @@ extension Mastodon {
         case unreblog(String)
         case favourite(String)
         case unfavourite(String)
+        case bookmark(String)
+        case unbookmark(String)
     }
 }
 
@@ -78,6 +80,10 @@ extension Mastodon.Statuses: TargetType {
             return "\(apiPath)/\(id)/favourite"
         case .unfavourite(let id):
             return "\(apiPath)/\(id)/unfavourite"
+        case .bookmark(let id):
+            return "\(apiPath)/\(id)/bookmark"
+        case .unbookmark(let id):
+            return "\(apiPath)/\(id)/unbookmark"
         }
     }
     

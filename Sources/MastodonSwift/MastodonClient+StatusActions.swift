@@ -33,7 +33,6 @@ public extension MastodonClientAuthenticated {
     }
     
     func unboost(status: Status) async throws -> Status {
-        // TODO: Check whether the current user already boosted the status
         let request = try Self.request(
             for: baseURL,
             target: Mastodon.Statuses.unreblog(status.id),
@@ -42,6 +41,30 @@ public extension MastodonClientAuthenticated {
         
         let (data, _) = try await urlSession.data(for: request)
         
+        return try JSONDecoder().decode(Status.self, from: data)
+    }
+
+    func bookmark(status: Status)async throws -> Status {
+        let request = try Self.request(
+            for: baseURL,
+            target: Mastodon.Statuses.bookmark(status.id),
+            withBearerToken: token
+        )
+
+        let (data, _) = try await urlSession.data(for: request)
+
+        return try JSONDecoder().decode(Status.self, from: data)
+    }
+
+    func unbookmark(status: Status)async throws -> Status {
+        let request = try Self.request(
+            for: baseURL,
+            target: Mastodon.Statuses.unbookmark(status.id),
+            withBearerToken: token
+        )
+
+        let (data, _) = try await urlSession.data(for: request)
+
         return try JSONDecoder().decode(Status.self, from: data)
     }
 }
