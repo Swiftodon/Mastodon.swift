@@ -35,8 +35,8 @@ extension Mastodon.Timelines: TargetType {
     }
     
     /// The parameters to be incoded in the request.
-    public var queryItems: [String: String]? {
-        var params: [String : String] = [:]
+    public var queryItems: [(String, String)]? {
+        var params: (String, String) = ("", "")
         var local: Bool? = nil
         var maxId: MaxId? = nil
         var sinceId: SinceId? = nil
@@ -53,15 +53,15 @@ extension Mastodon.Timelines: TargetType {
         }
 
         if let maxId = maxId {
-            params["max_id"] = maxId
+            params = ("max_id",  maxId)
         }
         if let sinceId = sinceId {
-            params["since_id"] = sinceId
+            params = ("since_id", sinceId)
         }
         if let local = local {
-            params["local"] = local.asString
+            params = ("local", local.asString)
         }
-        return params
+        return [params]
     }
     
     public var headers: [String: String]? {

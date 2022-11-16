@@ -59,21 +59,21 @@ extension Mastodon.Account: TargetType {
         }
     }
         
-    public var queryItems: [String: String]? {
+    public var queryItems: [(String, String)]? {
         switch self {
         case .statuses(_, let onlyMedia, let excludeReplies):
             return [
-                "only_media": onlyMedia.asString,
-                "exclude_replies": excludeReplies.asString
+                ("only_media", onlyMedia.asString),
+                ("exclude_replies", excludeReplies.asString)
             ]
         case .relationships(let id):
             return [
-                "id": id // todo: can be array
+                ("id", id) // todo: can be array
             ]
         case .search(let query, let limit):
             return [
-                "q": query,
-                "limit": limit.asString
+                ("q", query),
+                ("limit", limit.asString)
             ]
         default:
             return nil

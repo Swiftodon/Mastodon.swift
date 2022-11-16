@@ -34,7 +34,7 @@ extension Mastodon.FollowRequests: TargetType {
     }
     
     /// The parameters to be incoded in the request.
-    public var queryItems: [String: String]? {
+    public var queryItems: [(String, String)]? {
         nil
     }
     

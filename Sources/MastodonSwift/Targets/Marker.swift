@@ -40,21 +40,14 @@ extension Mastodon.Markers: TargetType {
         [:].contentTypeApplicationJson
     }
 
-    public var queryItems: [String : String]? {
+    public var queryItems: [(String, String)]? {
         switch self {
             case .set(_):
                 return nil
 
             case .read(let markers):
-                if markers.count > 1 {
-                    return [
-                        "timeline[]": "[\(markers.map { $0.rawValue }.joined(separator: ","))]"
-                    ]
-                } else {
-                    return [
-                        "timeline[]": "\(markers.map { $0.rawValue }.joined(separator: ","))"
-                    ]
-                }
+                return Array(markers)
+                    .map { ("timeline[]", $0.rawValue) }
         }
     }
 

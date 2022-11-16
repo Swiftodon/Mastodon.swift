@@ -19,7 +19,7 @@ public protocol TargetType {
     var path: String { get }
     var method: Method { get }
     var headers: [String: String]? { get }
-    var queryItems: [String: String]? { get }
+    var queryItems: [(String, String)]? { get }
     var httpBody: Data? { get }
 }
 

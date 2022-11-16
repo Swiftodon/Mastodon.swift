@@ -27,12 +27,12 @@ extension Mastodon.Search: TargetType {
     }
     
     /// The parameters to be incoded in the request.
-    public var queryItems: [String: String]? {
+    public var queryItems: [(String, String)]? {
         switch self {
         case .search(let query, let resolveNonLocal):
             return [
-                "q": query,
-                "resolve": resolveNonLocal.asString
+                ("q", query),
+                ("resolve", resolveNonLocal.asString)
             ]
         }
     }
