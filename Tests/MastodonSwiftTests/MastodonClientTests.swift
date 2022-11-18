@@ -75,7 +75,7 @@ class MastodonSwiftTests: XCTestCase {
         
         let request = try MastodonClient.request(
             for: URL(string: "https://bearologics.social")!,
-            target: Mastodon.Timelines.home(nil, nil),
+            target: Mastodon.Timelines.home(nil, nil, nil, nil),
             withBearerToken: token
         )
         

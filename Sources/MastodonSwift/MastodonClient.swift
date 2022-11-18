@@ -75,12 +75,15 @@ public class MastodonClientAuthenticated: MastodonClientProtocol {
         self.urlSession = urlSession
     }
         
-    public func getHomeTimeline(maxId: StatusId? = nil,
-                                sinceId: StatusId? = nil) async throws -> [Status] {
+    public func getHomeTimeline(
+        maxId: StatusId? = nil,
+        sinceId: StatusId? = nil,
+        minId: StatusId? = nil,
+        limit: Int? = nil) async throws -> [Status] {
 
         let request = try Self.request(
             for: baseURL,
-            target: Mastodon.Timelines.home(maxId, sinceId),
+            target: Mastodon.Timelines.home(maxId, sinceId, minId, limit),
             withBearerToken: token
         )
         
