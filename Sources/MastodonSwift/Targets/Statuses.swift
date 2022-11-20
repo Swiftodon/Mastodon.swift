@@ -90,7 +90,13 @@ extension Mastodon.Statuses: TargetType {
     /// The HTTP method used in the request.
     public var method: Method {
         switch self {
-        case .new(_, _, _, _, _, _), .reblog(_), .unreblog(_), .favourite(_), .unfavourite(_):
+        case .new(_, _, _, _, _, _),
+                    .reblog(_),
+                    .unreblog(_),
+                    .favourite(_),
+                    .unfavourite(_),
+                    .bookmark(_),
+                    .unbookmark(_):
             return .post
         case .delete(_):
             return .delete
