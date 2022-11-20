@@ -56,10 +56,34 @@ public extension MastodonClientAuthenticated {
         return try JSONDecoder().decode(Status.self, from: data)
     }
 
-    func unbookmark(statusId: StatusId)async throws -> Status {
+    func unbookmark(statusId: StatusId) async throws -> Status {
         let request = try Self.request(
             for: baseURL,
             target: Mastodon.Statuses.unbookmark(statusId),
+            withBearerToken: token
+        )
+
+        let (data, _) = try await urlSession.data(for: request)
+
+        return try JSONDecoder().decode(Status.self, from: data)
+    }
+
+    func favourite(statusId: StatusId) async throws -> Status {
+        let request = try Self.request(
+            for: baseURL,
+            target: Mastodon.Statuses.favourite(statusId),
+            withBearerToken: token
+        )
+
+        let (data, _) = try await urlSession.data(for: request)
+
+        return try JSONDecoder().decode(Status.self, from: data)
+    }
+
+    func unfavourite(statusId: StatusId) async throws -> Status {
+        let request = try Self.request(
+            for: baseURL,
+            target: Mastodon.Statuses.unfavourite(statusId),
             withBearerToken: token
         )
 
