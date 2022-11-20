@@ -19,11 +19,11 @@ public extension MastodonClientAuthenticated {
         return try JSONDecoder().decode(Status.self, from: data)
     }
 
-    func boost(status: Status) async throws -> Status {
+    func boost(statusId: StatusId) async throws -> Status {
         // TODO: Check whether the current user already boosted the status
         let request = try Self.request(
             for: baseURL,
-            target: Mastodon.Statuses.reblog(status.id),
+            target: Mastodon.Statuses.reblog(statusId),
             withBearerToken: token
         )
         
@@ -32,10 +32,10 @@ public extension MastodonClientAuthenticated {
         return try JSONDecoder().decode(Status.self, from: data)
     }
     
-    func unboost(status: Status) async throws -> Status {
+    func unboost(statusId: StatusId) async throws -> Status {
         let request = try Self.request(
             for: baseURL,
-            target: Mastodon.Statuses.unreblog(status.id),
+            target: Mastodon.Statuses.unreblog(statusId),
             withBearerToken: token
         )
         
@@ -44,10 +44,10 @@ public extension MastodonClientAuthenticated {
         return try JSONDecoder().decode(Status.self, from: data)
     }
 
-    func bookmark(status: Status)async throws -> Status {
+    func bookmark(statusId: StatusId) async throws -> Status {
         let request = try Self.request(
             for: baseURL,
-            target: Mastodon.Statuses.bookmark(status.id),
+            target: Mastodon.Statuses.bookmark(statusId),
             withBearerToken: token
         )
 
@@ -56,10 +56,10 @@ public extension MastodonClientAuthenticated {
         return try JSONDecoder().decode(Status.self, from: data)
     }
 
-    func unbookmark(status: Status)async throws -> Status {
+    func unbookmark(statusId: StatusId)async throws -> Status {
         let request = try Self.request(
             for: baseURL,
-            target: Mastodon.Statuses.unbookmark(status.id),
+            target: Mastodon.Statuses.unbookmark(statusId),
             withBearerToken: token
         )
 
