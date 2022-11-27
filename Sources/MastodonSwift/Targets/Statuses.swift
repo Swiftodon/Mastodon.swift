@@ -13,7 +13,7 @@ extension Mastodon {
         case card(String)
         case rebloggedBy(String)
         case favouritedBy(String)
-        case new(String, String?, [String]?, Bool, String, Visibility)
+        case new(Components)
         case delete(String)
         case reblog(String)
         case unreblog(String)
@@ -21,6 +21,41 @@ extension Mastodon {
         case unfavourite(String)
         case bookmark(String)
         case unbookmark(String)
+    }
+}
+
+extension Mastodon.Statuses {
+    public struct Components {
+        public let inReplyToId: StatusId?
+        public let text: String
+        public let spoilerText: String
+        public let mediaIds: [String]
+        public let visibility: Visibility
+        public let sensitive: Bool
+        public let pollOptions: [String]
+        public let pollExpiresIn: Int
+        public let pollMultipleChoice: Bool
+
+        public init(
+            inReplyToId: StatusId? = nil,
+            text: String,
+            spoilerText: String = "",
+            mediaIds: [String] = [],
+            visibility: Visibility = .pub,
+            sensitive: Bool = false,
+            pollOptions: [String] = [],
+            pollExpiresIn: Int = 0,
+            pollMultipleChoice: Bool = false) {
+                self.inReplyToId = inReplyToId
+                self.text = text
+                self.spoilerText = spoilerText
+                self.mediaIds = mediaIds
+                self.visibility = visibility
+                self.sensitive = sensitive
+                self.pollOptions = pollOptions
+                self.pollExpiresIn = pollExpiresIn
+                self.pollMultipleChoice = pollMultipleChoice
+            }
     }
 }
 
@@ -68,7 +103,7 @@ extension Mastodon.Statuses: TargetType {
             return "\(apiPath)/\(id)/reblogged_by"
         case .favouritedBy(let id):
             return "\(apiPath)/\(id)/favourited_by"
-        case .new(_, _, _, _, _, _):
+        case .new(_):
             return "\(apiPath)"
         case .delete(let id):
             return "\(apiPath)/\(id)"
@@ -90,7 +125,7 @@ extension Mastodon.Statuses: TargetType {
     /// The HTTP method used in the request.
     public var method: Method {
         switch self {
-        case .new(_, _, _, _, _, _),
+        case .new(_),
                     .reblog(_),
                     .unreblog(_),
                     .favourite(_),
@@ -116,10 +151,17 @@ extension Mastodon.Statuses: TargetType {
     
     public var httpBody: Data? {
         switch self {
-        case .new(let status, let inReplyToId, let mediaIds, let sensitive, let spoiler, let visibility):
+        case .new(let components):
             return try? JSONEncoder().encode(
-                Request(status: status, inReplyToId: inReplyToId, mediaIds: mediaIds, sensitive: sensitive, spoilerText: spoiler, visibility: visibility)
+                Request(
+                    status: components.text,
+                    inReplyToId: components.inReplyToId,
+                    mediaIds: components.mediaIds,
+                    sensitive: components.sensitive,
+                    spoilerText: components.spoilerText,
+                    visibility: components.visibility)
             )
+
         default:
             return nil
         }
