@@ -63,6 +63,8 @@ class MastodonSwiftTests: XCTestCase {
         let result = try await client.getHomeTimeline()
         
         XCTAssertEqual(result.first?.content, "<p>TEST</p>")
+        XCTAssertEqual(result.first?.repliesCount, 1)
+        XCTAssertEqual(result.last?.repliesCount, 0)
     }
     
     func testGetHomeTimeline_withoutConvenienceMethod() async throws {

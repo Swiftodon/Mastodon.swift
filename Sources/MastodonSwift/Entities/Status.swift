@@ -34,6 +34,7 @@ public class Status: Codable {
     public let mentions: [Mention]
     public let tags: [Tag]
     public let application: Application?
+    public let repliesCount: Int
 
     private enum CodingKeys: String, CodingKey {
         case id
@@ -60,6 +61,7 @@ public class Status: Codable {
         case mentions
         case tags
         case application
+        case repliesCount = "replies_count"
     }
 
     public required init(from decoder: Decoder) throws {
@@ -89,6 +91,7 @@ public class Status: Codable {
         self.mentions = (try? container.decode([Mention].self, forKey: .mentions)) ?? []
         self.tags = (try? container.decode([Tag].self, forKey: .tags)) ?? []
         self.application = try? container.decode(Application.self, forKey: .application)
+        self.repliesCount = try container.decode(Int.self, forKey: .repliesCount)
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -134,5 +137,6 @@ public class Status: Codable {
         if let application {
             try container.encode(application, forKey: .application)
         }
+        try container.encode(repliesCount, forKey: .repliesCount)
     }
 }
