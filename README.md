@@ -55,6 +55,52 @@ let client = MastodonClient(baseURL: URL(string: "https://mastodon.tld")!)
 let result = try await client.getHomeTimeline()
 ```
 
+### Using OAuth Login
+
+To use OAuth Login, [configure your application to handle a custom URL scheme](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app). If using Application Sandboxing, be sure to enable Outgoing Connections.
+
+Then use the following progression:
+
+```swift
+
+    let scopes = ["read", "write", "follow"]; //Define your scopes
+
+    let client = MastodonClient(baseURL: URL(string: urlString)!)
+    //Create a client instance for the server URL you want to reach
+
+    do {
+        //Create an application definition, including your custom URI, and register it with the server:
+        guard let app = try await client.createApp(named: "Your App Name", redirectUri: "your-url-scheme://", scopes: scopes, website: URL(string: "https://your-url")!) else {
+            return
+        }
+
+        let response = try await client.authenticate(app: app, scope: scopes )
+        //Trigger the authentication flow
+        
+        let token = response?.oauthToken as? MastodonSwift.Token
+        //Capture the auth token
+        
+        let authedClient = client.getAuthenticated(token: self.token!)
+        //Create an authenticated client instance
+        
+        let result = try await authedClient.getHomeTimeline()
+        //Load some content
+    }
+
+```
+
+Additionally, ensure a handler is set up for your custom URL:
+
+```swift 
+    ContentView()
+        .onOpenURL { url in
+            MastodonInterface.shared.handleOAuthResponse(url)
+        }
+
+```
+
+
+
 ## Requirements
 
 - `Xcode 14 / Swift 5`
