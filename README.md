@@ -94,7 +94,7 @@ Additionally, ensure a handler is set up for your custom URL:
 ```swift 
     ContentView()
         .onOpenURL { url in
-            MastodonInterface.shared.handleOAuthResponse(url)
+            MastodonClient.handleOAuthResponse(url: url)
         }
 
 ```
