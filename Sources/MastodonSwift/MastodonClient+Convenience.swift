@@ -40,20 +40,22 @@ public extension MastodonClient {
         
         return try await withCheckedThrowingContinuation { [weak self] continuation in
             self?.oAuthContinuation = continuation
-            oAuthHandle = oauthClient?.authorize(
-                withCallbackURL: app.redirectUri,
-                scope: scope.asScopeString,
-                state: "MASToDON_AUTH",
-                completionHandler: { result in
-                    switch result {
-                    case let .success((credentials, _, _)):
-                        continuation.resume(with: .success(credentials))
-                    case let .failure(error):
-                        continuation.resume(throwing: error)
+            DispatchQueue.main.sync {
+                oAuthHandle = oauthClient?.authorize(
+                    withCallbackURL: app.redirectUri,
+                    scope: scope.asScopeString,
+                    state: "MASToDON_AUTH",
+                    completionHandler: { [self] result in
+                        switch result {
+                            case let .success((credentials, _, _)):
+                                continuation.resume(with: .success(credentials))
+                            case let .failure(error):
+                                continuation.resume(throwing: error)
+                        }
+                        self?.oAuthContinuation = nil
                     }
-                    self?.oAuthContinuation = nil
-                }
-            )
+                )
+            }
         }
     }
     
