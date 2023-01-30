@@ -20,7 +20,7 @@ let getHomeTimelineMockResponseData = """
     "language": "de",
     "uri": "https://bearologics.social/users/Beartest/statuses/109264839555846597",
     "url": "https://bearologics.social/@Beartest/109264839555846597",
-    "replies_count": 0,
+    "replies_count": 1,
     "reblogs_count": 0,
     "favourites_count": 0,
     "edited_at": null,
