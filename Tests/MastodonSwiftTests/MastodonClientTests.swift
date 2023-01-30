@@ -54,7 +54,7 @@ class MastodonSwiftTests: XCTestCase {
         
         MockURLProtocol.error = nil
         MockURLProtocol.requestHandler = { _ in
-            getHomeTinelineMockResponse
+            getHomeTimelineMockResponse
         }
         
         let client = MastodonClient(baseURL: URL(string: "https://bearologics.social")!, urlSession: session)
@@ -70,7 +70,7 @@ class MastodonSwiftTests: XCTestCase {
         
         MockURLProtocol.error = nil
         MockURLProtocol.requestHandler = { _ in
-            getHomeTinelineMockResponse
+            getHomeTimelineMockResponse
         }
         
         let request = try MastodonClient.request(
@@ -91,7 +91,7 @@ class MastodonSwiftTests: XCTestCase {
         
         MockURLProtocol.error = nil
         MockURLProtocol.requestHandler = { _ in
-            getHomeTinelineMockResponse
+            getHomeTimelineMockResponse
         }
         
         let client = MastodonClient(baseURL: URL(string: "https://bearologics.social")!, urlSession: session)
@@ -107,7 +107,7 @@ class MastodonSwiftTests: XCTestCase {
         
         MockURLProtocol.error = nil
         MockURLProtocol.requestHandler = { _ in
-            getHomeTinelineMockResponse
+            getHomeTimelineMockResponse
         }
         
         let client = MastodonClient(baseURL: URL(string: "https://bearologics.social")!, urlSession: session)

@@ -124,4 +124,4 @@ let getHomeTimelineMockUrlResponse = HTTPURLResponse(
     headerFields: nil
 )!
 
-let getHomeTinelineMockResponse = (getHomeTimelineMockUrlResponse, getHomeTimelineMockResponseData)
+let getHomeTimelineMockResponse = (getHomeTimelineMockUrlResponse, getHomeTimelineMockResponseData)
