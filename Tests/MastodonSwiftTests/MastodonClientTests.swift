@@ -117,6 +117,20 @@ class MastodonSwiftTests: XCTestCase {
         
         XCTAssertEqual(result.first?.content, "<p>TEST</p>")
     }
+    
+    func testReadInstanceInformation() async throws {
+        MockURLProtocol.error = nil
+        MockURLProtocol.requestHandler = { _ in
+            readInstanceInformationMockResponse
+        }
+        let client = MastodonClient(baseURL: URL(string: "https://bearologics.social")!, urlSession: session)
+        let result = try await client.readInstanceInformation()
+        XCTAssertEqual(result.title,"Bearologics.social")
+        XCTAssertEqual(result.uri,"bearologics.social")
+        XCTAssertEqual(result.email,"mastodon@bearologics.com")
+        XCTAssertEqual(result.description,"")
+        XCTAssertNotNil(result.thumbnail)
+    }
 
     static var allTests = [
         ("testAuthentication", testAuthentication),
