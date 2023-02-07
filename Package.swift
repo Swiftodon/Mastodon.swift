@@ -8,7 +8,8 @@ let package = Package(
     platforms: [
         .iOS(.v13),
         .macOS(.v12),
-        .watchOS(.v8)
+        .watchOS(.v8),
+        .tvOS(.v15)
     ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
